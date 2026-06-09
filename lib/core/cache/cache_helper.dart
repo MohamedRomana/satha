@@ -16,6 +16,7 @@ class CacheHelper {
   static const _driverStatus = 'driverStatus';
   static const _userName = 'userName';
   static const _rememberMe = 'rememberMe';
+  static const _themeMode = 'themeMode';
   static const _lat = 'lat';
   static const _lng = 'lng';
 
@@ -129,5 +130,14 @@ class CacheHelper {
 
   static bool getRememberMe() {
     return _preferences.getBool(_rememberMe) ?? false;
+  }
+
+  /// وضع الثيم المخزّن: 'light' / 'dark' / 'system' (افتراضي system).
+  static setThemeMode(String mode) async {
+    await _preferences.setString(_themeMode, mode);
+  }
+
+  static String getThemeMode() {
+    return _preferences.getString(_themeMode) ?? 'system';
   }
 }

@@ -6,6 +6,7 @@ import 'package:satha/core/constants/colors.dart';
 import 'package:satha/core/constants/gradients.dart';
 import 'package:satha/core/di/dependancy_injection.dart';
 import 'package:satha/core/helper/extentions.dart';
+import 'package:satha/core/helper/theme_x.dart';
 import 'package:satha/core/routing/routes.dart';
 import 'package:satha/core/widgets/app_logo.dart';
 import 'package:satha/core/widgets/fade_slide_in.dart';
@@ -64,7 +65,7 @@ class TemporaryHomeView extends StatelessWidget {
 
     return Scaffold(
       body: Container(
-        decoration: const BoxDecoration(gradient: AppGradients.deep),
+        decoration: BoxDecoration(gradient: context.brandGradient),
         child: SafeArea(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 24.w),
@@ -78,11 +79,15 @@ class TemporaryHomeView extends StatelessWidget {
                     width: double.infinity,
                     padding: EdgeInsets.all(26.w),
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: context.isDark ? Colors.white : AppColors.card,
                       borderRadius: BorderRadius.circular(28.r),
+                      border: context.isDark
+                          ? null
+                          : Border.all(color: AppColors.border),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withValues(alpha: 0.2),
+                          color: (context.isDark ? Colors.black : AppColors.navy)
+                              .withValues(alpha: 0.15),
                           blurRadius: 30,
                           offset: const Offset(0, 12),
                         ),

@@ -70,6 +70,10 @@ class $AssetsImgGen {
   /// File path: assets/img/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/img/logo.png');
 
+  /// File path: assets/img/logo_white.png
+  AssetGenImage get logoWhite =>
+      const AssetGenImage('assets/img/logo_white.png');
+
   /// File path: assets/img/noti_empty.json
   String get notiEmpty => 'assets/img/noti_empty.json';
 
@@ -87,6 +91,7 @@ class $AssetsImgGen {
     location,
     login,
     logo,
+    logoWhite,
     notiEmpty,
     waitAdmin,
   ];

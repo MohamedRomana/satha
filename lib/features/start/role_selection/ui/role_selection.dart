@@ -5,11 +5,13 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import 'package:satha/core/constants/gradients.dart';
 import 'package:satha/core/helper/extentions.dart';
+import 'package:satha/core/helper/theme_x.dart';
 import 'package:satha/core/routing/routes.dart';
 import 'package:satha/core/widgets/app_logo.dart';
 import 'package:satha/core/widgets/auth_background.dart';
 import 'package:satha/core/widgets/fade_slide_in.dart';
 import 'package:satha/core/widgets/lang_toggle.dart';
+import 'package:satha/core/widgets/theme_toggle.dart';
 import 'package:satha/gen/fonts.gen.dart';
 import 'package:satha/generated/locale_keys.g.dart';
 import 'widgets/role_selection_card.dart';
@@ -26,11 +28,15 @@ class RoleSelectionScreen extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 24.w),
             child: Column(
               children: [
-                Align(
-                  alignment: AlignmentDirectional.centerEnd,
-                  child: Padding(
-                    padding: EdgeInsets.only(top: 8.h),
-                    child: const LangToggle(),
+                Padding(
+                  padding: EdgeInsets.only(top: 8.h),
+                  child: const Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      ThemeToggle(),
+                      SizedBox(width: 8),
+                      LangToggle(),
+                    ],
                   ),
                 ),
                 SizedBox(height: 10.h),
@@ -44,7 +50,7 @@ class RoleSelectionScreen extends StatelessWidget {
                   child: Text(
                     LocaleKeys.welcomeToSatha.tr(),
                     style: TextStyle(
-                      color: Colors.white,
+                      color: context.onBrand,
                       fontSize: 24.sp,
                       fontFamily: FontFamily.tajawalBold,
                     ),
@@ -57,7 +63,7 @@ class RoleSelectionScreen extends StatelessWidget {
                     LocaleKeys.chooseLoginMethod.tr(),
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      color: Colors.white.withValues(alpha: 0.75),
+                      color: context.onBrandMuted,
                       fontSize: 14.sp,
                       fontFamily: FontFamily.tajawalRegular,
                     ),
@@ -100,13 +106,13 @@ class RoleSelectionScreen extends StatelessWidget {
                     onPressed: () => context.pushNamed(Routes.adminLogin),
                     icon: Icon(
                       Icons.admin_panel_settings_outlined,
-                      color: Colors.white.withValues(alpha: 0.8),
+                      color: context.onBrandMuted,
                       size: 18.w,
                     ),
                     label: Text(
                       LocaleKeys.adminLogin.tr(),
                       style: TextStyle(
-                        color: Colors.white.withValues(alpha: 0.8),
+                        color: context.onBrandMuted,
                         fontSize: 14.sp,
                         fontFamily: FontFamily.tajawalMedium,
                       ),

@@ -4,11 +4,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:satha/core/helper/extentions.dart';
+import 'package:satha/core/helper/theme_x.dart';
 import 'package:satha/core/routing/routes.dart';
 import 'package:satha/core/widgets/app_logo.dart';
 import 'package:satha/core/widgets/auth_background.dart';
 import 'package:satha/core/widgets/flash_message.dart';
 import 'package:satha/core/widgets/lang_toggle.dart';
+import 'package:satha/core/widgets/theme_toggle.dart';
 import 'package:satha/gen/fonts.gen.dart';
 import 'package:satha/generated/locale_keys.g.dart';
 import 'package:satha/features/auth/driver_register/logic/driver_register_cubit.dart';
@@ -62,7 +64,13 @@ class DriverRegisterScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         AppLogo(size: 44, hero: false),
-                        LangToggle(),
+                        Row(
+                          children: [
+                            ThemeToggle(),
+                            SizedBox(width: 8),
+                            LangToggle(),
+                          ],
+                        ),
                       ],
                     ),
                   ),
@@ -70,7 +78,7 @@ class DriverRegisterScreen extends StatelessWidget {
                   Text(
                     stepTitles[step],
                     style: TextStyle(
-                      color: Colors.white,
+                      color: context.onBrand,
                       fontSize: 18.sp,
                       fontFamily: FontFamily.tajawalBold,
                     ),

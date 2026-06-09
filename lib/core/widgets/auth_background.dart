@@ -3,7 +3,7 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 
 import '../constants/colors.dart';
-import '../constants/gradients.dart';
+import '../helper/theme_x.dart';
 
 /// خلفية متحرّكة بهوية سطحة: تدرّج navy + توهّجات برتقالية ناعمة تتحرّك ببطء
 /// + خطوط طريق متقطّعة — حركة خفيفة لا تشتّت المحتوى.
@@ -30,8 +30,9 @@ class _AnimatedAuthBackgroundState extends State<AnimatedAuthBackground>
 
   @override
   Widget build(BuildContext context) {
+    final dark = context.isDark;
     return DecoratedBox(
-      decoration: const BoxDecoration(gradient: AppGradients.deep),
+      decoration: BoxDecoration(gradient: context.brandGradient),
       child: AnimatedBuilder(
         animation: _controller,
         builder: (context, child) {
@@ -46,7 +47,12 @@ class _AnimatedAuthBackgroundState extends State<AnimatedAuthBackground>
               Positioned(
                 bottom: -80 - (20 * math.sin(t * 2 * math.pi)),
                 left: -50,
-                child: _glow(260, AppColors.navy2.withValues(alpha: 0.55)),
+                child: _glow(
+                  260,
+                  dark
+                      ? AppColors.navy2.withValues(alpha: 0.55)
+                      : AppColors.orange2.withValues(alpha: 0.18),
+                ),
               ),
               Positioned.fill(
                 child: CustomPaint(painter: _RoadDashesPainter(t)),

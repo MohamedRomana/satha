@@ -5,10 +5,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:satha/core/cache/cache_helper.dart';
 import 'package:satha/core/helper/extentions.dart';
+import 'package:satha/core/helper/theme_x.dart';
 import 'package:satha/core/routing/routes.dart';
 import 'package:satha/core/widgets/auth_background.dart';
 import 'package:satha/core/widgets/lang_toggle.dart';
 import 'package:satha/core/widgets/primary_button.dart';
+import 'package:satha/core/widgets/theme_toggle.dart';
 import 'package:satha/gen/fonts.gen.dart';
 import 'package:satha/generated/locale_keys.g.dart';
 import '../data/models/onboarding_item_model.dart';
@@ -71,13 +73,19 @@ class OnboardingScreen extends StatelessWidget {
                             child: Text(
                               LocaleKeys.skip.tr(),
                               style: TextStyle(
-                                color: Colors.white.withValues(alpha: 0.85),
+                                color: context.onBrandMuted,
                                 fontSize: 14.sp,
                                 fontFamily: FontFamily.tajawalMedium,
                               ),
                             ),
                           ),
-                          const LangToggle(),
+                          const Row(
+                            children: [
+                              ThemeToggle(),
+                              SizedBox(width: 8),
+                              LangToggle(),
+                            ],
+                          ),
                         ],
                       ),
                     ),
@@ -99,7 +107,7 @@ class OnboardingScreen extends StatelessWidget {
                                   item.title.tr(),
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
-                                    color: Colors.white,
+                                    color: context.onBrand,
                                     fontSize: 22.sp,
                                     fontFamily: FontFamily.tajawalBold,
                                   ),
@@ -109,7 +117,7 @@ class OnboardingScreen extends StatelessWidget {
                                   item.description.tr(),
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
-                                    color: Colors.white.withValues(alpha: 0.75),
+                                    color: context.onBrandMuted,
                                     fontSize: 14.sp,
                                     height: 1.6,
                                     fontFamily: FontFamily.tajawalRegular,

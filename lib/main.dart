@@ -5,12 +5,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'core/cache/cache_helper.dart';
-import 'core/constants/colors.dart';
 import 'core/di/dependancy_injection.dart';
 import 'core/networking/bloc_observer.dart';
 import 'core/routing/app_router.dart';
 import 'core/routing/routes.dart';
-import 'gen/fonts.gen.dart';
+import 'core/theme/app_theme.dart';
+import 'core/theme/theme_cubit.dart';
 import 'generated/codegen_loader.g.dart';
 
 void main() async {
@@ -51,46 +51,32 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        return GestureDetector(
-          onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-          child: MaterialApp(
-            // إعادة المفتاح عند تغيير اللغة تُعيد بناء كامل التطبيق (بما فيه الشاشات
-            // المفتوحة) فوراً باللغة الجديدة بدل بقاء النصوص القديمة.
-            key: ValueKey(context.locale.languageCode),
-            title: 'سطحة',
-            debugShowCheckedModeBanner: false,
-            theme: _buildTheme(),
-            localizationsDelegates: context.localizationDelegates,
-            supportedLocales: context.supportedLocales,
-            locale: context.locale,
-            onGenerateRoute: appRouter.onGenerateRoute,
-            initialRoute: Routes.splash,
+        return BlocProvider(
+          create: (_) => ThemeCubit(),
+          child: BlocBuilder<ThemeCubit, ThemeMode>(
+            builder: (context, themeMode) {
+              return GestureDetector(
+                onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+                child: MaterialApp(
+                  // إعادة المفتاح عند تغيير اللغة تُعيد بناء كامل التطبيق (بما فيه
+                  // الشاشات المفتوحة) فوراً باللغة الجديدة بدل بقاء النصوص القديمة.
+                  key: ValueKey(context.locale.languageCode),
+                  title: 'سطحة',
+                  debugShowCheckedModeBanner: false,
+                  theme: AppTheme.light,
+                  darkTheme: AppTheme.dark,
+                  themeMode: themeMode,
+                  localizationsDelegates: context.localizationDelegates,
+                  supportedLocales: context.supportedLocales,
+                  locale: context.locale,
+                  onGenerateRoute: appRouter.onGenerateRoute,
+                  initialRoute: Routes.splash,
+                ),
+              );
+            },
           ),
         );
       },
-    );
-  }
-
-  ThemeData _buildTheme() {
-    return ThemeData(
-      useMaterial3: true,
-      fontFamily: FontFamily.tajawalRegular,
-      scaffoldBackgroundColor: AppColors.lightBg,
-      colorScheme: ColorScheme.fromSeed(
-        seedColor: AppColors.navy,
-        primary: AppColors.orange,
-        secondary: AppColors.navy,
-        error: AppColors.error,
-      ),
-      textSelectionTheme: TextSelectionThemeData(
-        cursorColor: AppColors.orange,
-        selectionColor: AppColors.orange.withValues(alpha: 0.3),
-        selectionHandleColor: AppColors.orange,
-      ),
-      appBarTheme: const AppBarTheme(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      ),
     );
   }
 }

@@ -6,6 +6,7 @@ import 'package:satha/core/cache/cache_helper.dart';
 import 'package:satha/core/constants/colors.dart';
 import 'package:satha/core/constants/gradients.dart';
 import 'package:satha/core/helper/extentions.dart';
+import 'package:satha/core/helper/theme_x.dart';
 import 'package:satha/core/routing/routes.dart';
 import 'package:satha/core/widgets/app_logo.dart';
 import 'package:satha/gen/fonts.gen.dart';
@@ -88,7 +89,7 @@ class _SplashScreenState extends State<SplashScreen>
     return Scaffold(
       body: Container(
         width: double.infinity,
-        decoration: const BoxDecoration(gradient: AppGradients.deep),
+        decoration: BoxDecoration(gradient: context.brandGradient),
         child: SafeArea(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -160,7 +161,7 @@ class _SplashScreenState extends State<SplashScreen>
                     Text(
                       LocaleKeys.splashLoading.tr(),
                       style: TextStyle(
-                        color: Colors.white.withValues(alpha: 0.85),
+                        color: context.onBrandMuted,
                         fontSize: 13.sp,
                         fontFamily: FontFamily.tajawalRegular,
                       ),

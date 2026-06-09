@@ -3,17 +3,22 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../gen/assets.gen.dart';
 import '../constants/colors.dart';
+import '../helper/theme_x.dart';
 
-/// شعار سطحة الشفّاف — يظهر بدون خلفية بيضاء أو إطار.
+/// شعار سطحة الشفّاف — يختار النسخة المناسبة للثيم تلقائيًا:
+/// الوضع الداكن ⇐ اللوجو الأبيض، الوضع الفاتح ⇐ لوجو الـ navy.
+/// يمكن إجبار نسخة معيّنة عبر [forceWhite].
 class AppLogo extends StatelessWidget {
   final double? size;
   final bool hero;
-  const AppLogo({super.key, this.size, this.hero = true});
+  final bool? forceWhite;
+  const AppLogo({super.key, this.size, this.hero = true, this.forceWhite});
 
   @override
   Widget build(BuildContext context) {
+    final useWhite = forceWhite ?? context.isDark;
     final image = Image.asset(
-      Assets.img.logo.path,
+      useWhite ? Assets.img.logoWhite.path : Assets.img.logo.path,
       width: size ?? 110.w,
       height: size ?? 110.w,
       fit: BoxFit.contain,

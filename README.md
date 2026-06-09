@@ -124,6 +124,16 @@ flutter run
 - **السائق قيد المراجعة:** لا تُحفظ له جلسة أصلًا (يُمنع الدخول برسالة عربية واضحة).
 - **الخروج:** يمسح الجلسة، ويعيد لاختيار الدور مع منع الرجوع (`pushNamedAndRemoveUntil`).
 
+## 9.1) الثيمات (Light / Dark) واللوجو
+
+- ثيمان كاملان في `core/theme/app_theme.dart` (`AppTheme.light` / `AppTheme.dark`)،
+  يُداران عبر `ThemeCubit` (محفوظ في `CacheHelper`، الافتراضي تَبَع النظام).
+- زر تبديل الثيم `ThemeToggle` موجود في شاشات البداية والمصادقة بجوار زر اللغة.
+- **اللوجو يتغيّر تلقائيًا مع الثيم:** الوضع الداكن ⇐ `logo_white.png`، الوضع الفاتح ⇐
+  `logo.png` (الـ navy) — عبر `AppLogo` الذي يقرأ `Theme.of(context).brightness`.
+- خلفيات شاشات الـ brand (Splash/Onboarding/Role/Auth/Home المؤقتة) تتبع الثيم أيضًا
+  (`context.brandGradient` + `context.onBrand`) فيظهر اللوجو والنص بوضوح في الحالتين.
+
 ## 10) كيف تُخزَّن الحالة
 
 - **اكتمال الأونبوردنق:** `CacheHelper.setShowIntro(true)` (SharedPreferences).

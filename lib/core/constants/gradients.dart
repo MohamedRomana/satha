@@ -10,11 +10,18 @@ abstract class AppGradients {
     colors: [AppColors.navy, AppColors.navy2],
   );
 
-  /// تدرّج داكن أعمق للـ Splash.
+  /// تدرّج داكن أعمق للـ Splash (الوضع الداكن).
   static const LinearGradient deep = LinearGradient(
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
     colors: [AppColors.deepBg, AppColors.navy, AppColors.navy2],
+  );
+
+  /// تدرّج فاتح لخلفيات الشاشات في الوضع الفاتح.
+  static const LinearGradient light = LinearGradient(
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+    colors: [Color(0xffFFFFFF), AppColors.lightBg, AppColors.softOrange],
   );
 
   /// تدرّج البرتقالي للـ CTA والعناصر المميزة.

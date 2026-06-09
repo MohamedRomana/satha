@@ -3,18 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../cache/cache_helper.dart';
-import '../constants/colors.dart';
+import '../helper/theme_x.dart';
 
-/// زر تبديل اللغة (ع/EN) — العربية تبقى الافتراضية.
+/// زر تبديل اللغة (ع/EN) — العربية تبقى الافتراضية، ولونه يتكيّف مع الثيم.
 class LangToggle extends StatelessWidget {
-  /// لو true يستخدم ألوان فاتحة (فوق خلفية داكنة).
-  final bool onDark;
-  const LangToggle({super.key, this.onDark = true});
+  const LangToggle({super.key});
 
   @override
   Widget build(BuildContext context) {
     final isAr = context.locale.languageCode == 'ar';
-    final fg = onDark ? Colors.white : AppColors.navy;
+    final fg = context.onBrand;
     return InkWell(
       borderRadius: BorderRadius.circular(20.r),
       onTap: () async {
@@ -23,11 +21,10 @@ class LangToggle extends StatelessWidget {
         if (context.mounted) await context.setLocale(next);
       },
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
+        height: 40.w,
+        padding: EdgeInsets.symmetric(horizontal: 12.w),
         decoration: BoxDecoration(
-          color: (onDark ? Colors.white : AppColors.navy).withValues(
-            alpha: 0.12,
-          ),
+          color: fg.withValues(alpha: 0.12),
           borderRadius: BorderRadius.circular(20.r),
           border: Border.all(color: fg.withValues(alpha: 0.25)),
         ),

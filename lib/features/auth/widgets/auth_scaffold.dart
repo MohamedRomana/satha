@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'package:satha/core/constants/colors.dart';
+import 'package:satha/core/helper/theme_x.dart';
 import 'package:satha/core/widgets/app_logo.dart';
 import 'package:satha/core/widgets/auth_background.dart';
 import 'package:satha/core/widgets/fade_slide_in.dart';
 import 'package:satha/core/widgets/lang_toggle.dart';
+import 'package:satha/core/widgets/theme_toggle.dart';
 import 'package:satha/gen/fonts.gen.dart';
 
 /// هيكل موحّد لكل شاشات المصادقة:
@@ -50,10 +53,15 @@ class AuthScaffold extends StatelessWidget {
                       )
                     else
                       const SizedBox(width: 40),
-                    if (showLangToggle)
-                      const LangToggle()
-                    else
-                      const SizedBox(width: 40),
+                    Row(
+                      children: [
+                        const ThemeToggle(),
+                        if (showLangToggle) ...[
+                          SizedBox(width: 8.w),
+                          const LangToggle(),
+                        ],
+                      ],
+                    ),
                   ],
                 ),
               ),
@@ -74,7 +82,7 @@ class AuthScaffold extends StatelessWidget {
                           title,
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            color: Colors.white,
+                            color: context.onBrand,
                             fontSize: 22.sp,
                             fontFamily: FontFamily.tajawalBold,
                           ),
@@ -88,7 +96,7 @@ class AuthScaffold extends StatelessWidget {
                             subtitle!,
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                              color: Colors.white.withValues(alpha: 0.75),
+                              color: context.onBrandMuted,
                               fontSize: 13.sp,
                               height: 1.5,
                               fontFamily: FontFamily.tajawalRegular,
@@ -105,11 +113,19 @@ class AuthScaffold extends StatelessWidget {
                           width: double.infinity,
                           padding: EdgeInsets.all(20.w),
                           decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: context.isDark
+                                ? Colors.white
+                                : AppColors.card,
                             borderRadius: BorderRadius.circular(28.r),
+                            border: context.isDark
+                                ? null
+                                : Border.all(color: AppColors.border),
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.black.withValues(alpha: 0.18),
+                                color: (context.isDark
+                                        ? Colors.black
+                                        : AppColors.navy)
+                                    .withValues(alpha: 0.15),
                                 blurRadius: 30,
                                 offset: const Offset(0, 12),
                               ),
@@ -142,6 +158,7 @@ class _CircleIconButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final fg = context.onBrand;
     return InkWell(
       onTap: onTap,
       borderRadius: BorderRadius.circular(40.r),
@@ -150,13 +167,13 @@ class _CircleIconButton extends StatelessWidget {
         height: 40.w,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: Colors.white.withValues(alpha: 0.12),
+          color: fg.withValues(alpha: 0.12),
           shape: BoxShape.circle,
-          border: Border.all(color: Colors.white.withValues(alpha: 0.2)),
+          border: Border.all(color: fg.withValues(alpha: 0.2)),
         ),
         child: Transform.flip(
           flipX: flip,
-          child: Icon(icon, color: Colors.white, size: 16.w),
+          child: Icon(icon, color: fg, size: 16.w),
         ),
       ),
     );

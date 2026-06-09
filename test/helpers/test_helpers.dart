@@ -1,7 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:satha/core/theme/theme_cubit.dart';
 import 'package:satha/generated/codegen_loader.g.dart';
 
 /// يلفّ الـ widget تحت اختبار بـ EasyLocalization + ScreenUtil + MaterialApp.
@@ -14,14 +16,17 @@ class _TestApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: const Size(375, 812),
-      builder: (_, __) => MaterialApp(
-        debugShowCheckedModeBanner: false,
-        localizationsDelegates: context.localizationDelegates,
-        supportedLocales: context.supportedLocales,
-        locale: context.locale,
-        onGenerateRoute: (settings) =>
-            MaterialPageRoute(builder: (_) => const Scaffold()),
-        home: child,
+      builder: (_, __) => BlocProvider(
+        create: (_) => ThemeCubit(),
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          localizationsDelegates: context.localizationDelegates,
+          supportedLocales: context.supportedLocales,
+          locale: context.locale,
+          onGenerateRoute: (settings) =>
+              MaterialPageRoute(builder: (_) => const Scaffold()),
+          home: child,
+        ),
       ),
     );
   }
