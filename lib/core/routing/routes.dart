@@ -16,6 +16,11 @@ class Routes {
   static const String customerHome = '/customerHome';
   static const String driverHome = '/driverHome';
   static const String adminHome = '/adminHome';
+
+  // ---- العميل: السيارات ----
+  static const String vehicleDetails = '/vehicleDetails';
+  static const String addVehicle = '/addVehicle';
+  static const String editVehicle = '/editVehicle';
   static const String logIn = '/logIn';
   static const String register = '/register';
   static const String otp = '/otp';

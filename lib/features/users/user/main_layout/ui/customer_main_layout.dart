@@ -6,7 +6,7 @@ import 'package:satha/features/users/user/home/ui/customer_home.dart';
 import 'package:satha/features/users/user/main_layout/logic/main_layout_cubit.dart';
 import 'package:satha/features/users/user/orders/ui/customer_orders_placeholder.dart';
 import 'package:satha/features/users/user/profile/ui/customer_profile_placeholder.dart';
-import 'package:satha/features/users/user/vehicles/ui/customer_vehicles_placeholder.dart';
+import 'package:satha/features/users/user/vehicles/ui/customer_vehicles_screen.dart';
 import 'widgets/customer_bottom_nav.dart';
 
 /// الهيكل الرئيسي للعميل — IndexedStack يحافظ على حالة كل تبويب.
@@ -16,7 +16,7 @@ class CustomerMainLayout extends StatelessWidget {
   static const _tabs = [
     CustomerHomeScreen(),
     CustomerOrdersPlaceholderScreen(),
-    CustomerVehiclesPlaceholderScreen(),
+    CustomerVehiclesScreen(),
     CustomerChatsPlaceholderScreen(),
     CustomerProfilePlaceholderScreen(),
   ];

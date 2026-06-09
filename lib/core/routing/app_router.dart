@@ -23,6 +23,12 @@ import '../../features/start/splash/ui/splash.dart';
 import '../../features/users/admin/home/ui/admin_temporary_home.dart';
 import '../../features/users/provider/home/ui/driver_temporary_home.dart';
 import '../../features/users/user/main_layout/ui/customer_main_layout.dart';
+import '../../features/users/user/shared/coming_soon_view.dart';
+import '../../features/users/user/vehicles/data/models/vehicle_model.dart';
+import '../../features/users/user/vehicles/ui/vehicle_details_screen.dart';
+import '../../core/constants/app_icons.dart';
+import '../../generated/locale_keys.g.dart' show LocaleKeys;
+import 'package:easy_localization/easy_localization.dart';
 import '../../generated/locale_keys.g.dart';
 import '../di/dependancy_injection.dart';
 import 'routes.dart';
@@ -143,6 +149,31 @@ class AppRouter {
 
       case Routes.customerHome:
         return _route(settings, const CustomerMainLayout());
+
+      case Routes.vehicleDetails:
+        return _route(
+          settings,
+          VehicleDetailsScreen(vehicle: args!['vehicle'] as VehicleModel),
+        );
+
+      // مؤقت — تُستبدل بشاشات إضافة/تعديل السيارة في الجزء التالي.
+      case Routes.addVehicle:
+        return _route(
+          settings,
+          ComingSoonView(
+            title: LocaleKeys.addVehicleTitle.tr(),
+            icon: AppIcons.car,
+          ),
+        );
+
+      case Routes.editVehicle:
+        return _route(
+          settings,
+          ComingSoonView(
+            title: LocaleKeys.editVehicleTitle.tr(),
+            icon: AppIcons.car,
+          ),
+        );
 
       case Routes.driverHome:
         return _route(settings, const DriverTemporaryHomeScreen());

@@ -24,8 +24,14 @@ class AppIcons {
   static const String notification = '$_common/notification.svg';
   static const String support = '$_common/support.svg';
   static const String arrowLeft = '$_common/arrow_left.svg';
+  static const String edit = '$_common/edit.svg';
+  static const String delete = '$_common/delete.svg';
+  static const String add = '$_common/add.svg';
+  static const String camera = '$_common/camera.svg';
+  static const String gallery = '$_common/gallery.svg';
+  static const String checkCircle = '$_common/check_circle.svg';
 
-  // vehicles (تُستخدم في المرحلة التالية)
+  // vehicles
   static const String car = '$_vehicles/car.svg';
   static const String carPlate = '$_vehicles/car_plate.svg';
   static const String carColor = '$_vehicles/car_color.svg';

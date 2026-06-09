@@ -337,8 +337,26 @@ class $AssetsSvgGen {
 class $AssetsIconsCommonGen {
   const $AssetsIconsCommonGen();
 
+  /// File path: assets/icons/common/add.svg
+  String get add => 'assets/icons/common/add.svg';
+
   /// File path: assets/icons/common/arrow_left.svg
   String get arrowLeft => 'assets/icons/common/arrow_left.svg';
+
+  /// File path: assets/icons/common/camera.svg
+  String get camera => 'assets/icons/common/camera.svg';
+
+  /// File path: assets/icons/common/check_circle.svg
+  String get checkCircle => 'assets/icons/common/check_circle.svg';
+
+  /// File path: assets/icons/common/delete.svg
+  String get delete => 'assets/icons/common/delete.svg';
+
+  /// File path: assets/icons/common/edit.svg
+  String get edit => 'assets/icons/common/edit.svg';
+
+  /// File path: assets/icons/common/gallery.svg
+  String get gallery => 'assets/icons/common/gallery.svg';
 
   /// File path: assets/icons/common/notification.svg
   String get notification => 'assets/icons/common/notification.svg';
@@ -347,7 +365,17 @@ class $AssetsIconsCommonGen {
   String get support => 'assets/icons/common/support.svg';
 
   /// List of all assets
-  List<String> get values => [arrowLeft, notification, support];
+  List<String> get values => [
+    add,
+    arrowLeft,
+    camera,
+    checkCircle,
+    delete,
+    edit,
+    gallery,
+    notification,
+    support,
+  ];
 }
 
 class $AssetsIconsNavigationGen {
@@ -405,8 +433,20 @@ class $AssetsIconsVehiclesGen {
   /// File path: assets/icons/vehicles/.gitkeep
   String get aGitkeep => 'assets/icons/vehicles/.gitkeep';
 
+  /// File path: assets/icons/vehicles/car.svg
+  String get car => 'assets/icons/vehicles/car.svg';
+
+  /// File path: assets/icons/vehicles/car_color.svg
+  String get carColor => 'assets/icons/vehicles/car_color.svg';
+
+  /// File path: assets/icons/vehicles/car_plate.svg
+  String get carPlate => 'assets/icons/vehicles/car_plate.svg';
+
+  /// File path: assets/icons/vehicles/chassis.svg
+  String get chassis => 'assets/icons/vehicles/chassis.svg';
+
   /// List of all assets
-  List<String> get values => [aGitkeep];
+  List<String> get values => [aGitkeep, car, carColor, carPlate, chassis];
 }
 
 class Assets {
