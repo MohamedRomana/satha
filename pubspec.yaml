@@ -101,6 +101,12 @@ flutter:
     - assets/img/
     - assets/svg/
     - assets/fonts/
+    - assets/icons/navigation/
+    - assets/icons/services/
+    - assets/icons/common/
+    - assets/icons/vehicles/
+    - assets/icons/orders/
+    - assets/map_styles/
     - assets/Lang/ar.json
     - assets/Lang/en.json
 
