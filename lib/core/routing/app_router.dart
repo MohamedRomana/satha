@@ -21,8 +21,8 @@ import '../../features/start/on_boarding/ui/on_boarding.dart';
 import '../../features/start/role_selection/ui/role_selection.dart';
 import '../../features/start/splash/ui/splash.dart';
 import '../../features/users/admin/home/ui/admin_temporary_home.dart';
-import '../../features/users/user/home/ui/customer_temporary_home.dart';
 import '../../features/users/provider/home/ui/driver_temporary_home.dart';
+import '../../features/users/user/main_layout/ui/customer_main_layout.dart';
 import '../../generated/locale_keys.g.dart';
 import '../di/dependancy_injection.dart';
 import 'routes.dart';
@@ -142,7 +142,7 @@ class AppRouter {
         );
 
       case Routes.customerHome:
-        return _route(settings, const CustomerTemporaryHomeScreen());
+        return _route(settings, const CustomerMainLayout());
 
       case Routes.driverHome:
         return _route(settings, const DriverTemporaryHomeScreen());

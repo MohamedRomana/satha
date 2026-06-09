@@ -88,8 +88,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-# ملاحظة: لتشغيل build_runner على Dart 3.10 فعّل override التالي مؤقتًا أثناء التوليد فقط
-# ثم علّقه قبل بناء/تشغيل التطبيق (يكسر path_provider على Android لو بقي):
+# لتشغيل build_runner على Dart 3.10 فعّل override التالي مؤقتًا أثناء التوليد ثم علّقه:
 #   dependency_overrides:
 #     objective_c: 7.1.0
 

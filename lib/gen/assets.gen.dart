@@ -40,6 +40,25 @@ class $AssetsFontsGen {
   List<String> get values => [tajawalBold, tajawalMedium, tajawalRegular];
 }
 
+class $AssetsIconsGen {
+  const $AssetsIconsGen();
+
+  /// Directory path: assets/icons/common
+  $AssetsIconsCommonGen get common => const $AssetsIconsCommonGen();
+
+  /// Directory path: assets/icons/navigation
+  $AssetsIconsNavigationGen get navigation => const $AssetsIconsNavigationGen();
+
+  /// Directory path: assets/icons/orders
+  $AssetsIconsOrdersGen get orders => const $AssetsIconsOrdersGen();
+
+  /// Directory path: assets/icons/services
+  $AssetsIconsServicesGen get services => const $AssetsIconsServicesGen();
+
+  /// Directory path: assets/icons/vehicles
+  $AssetsIconsVehiclesGen get vehicles => const $AssetsIconsVehiclesGen();
+}
+
 class $AssetsImgGen {
   const $AssetsImgGen();
 
@@ -95,6 +114,16 @@ class $AssetsImgGen {
     notiEmpty,
     waitAdmin,
   ];
+}
+
+class $AssetsMapStylesGen {
+  const $AssetsMapStylesGen();
+
+  /// File path: assets/map_styles/sat7a_map_style.json
+  String get sat7aMapStyle => 'assets/map_styles/sat7a_map_style.json';
+
+  /// List of all assets
+  List<String> get values => [sat7aMapStyle];
 }
 
 class $AssetsSvgGen {
@@ -305,12 +334,89 @@ class $AssetsSvgGen {
   ];
 }
 
+class $AssetsIconsCommonGen {
+  const $AssetsIconsCommonGen();
+
+  /// File path: assets/icons/common/arrow_left.svg
+  String get arrowLeft => 'assets/icons/common/arrow_left.svg';
+
+  /// File path: assets/icons/common/notification.svg
+  String get notification => 'assets/icons/common/notification.svg';
+
+  /// File path: assets/icons/common/support.svg
+  String get support => 'assets/icons/common/support.svg';
+
+  /// List of all assets
+  List<String> get values => [arrowLeft, notification, support];
+}
+
+class $AssetsIconsNavigationGen {
+  const $AssetsIconsNavigationGen();
+
+  /// File path: assets/icons/navigation/chat.svg
+  String get chat => 'assets/icons/navigation/chat.svg';
+
+  /// File path: assets/icons/navigation/home.svg
+  String get home => 'assets/icons/navigation/home.svg';
+
+  /// File path: assets/icons/navigation/orders.svg
+  String get orders => 'assets/icons/navigation/orders.svg';
+
+  /// File path: assets/icons/navigation/profile.svg
+  String get profile => 'assets/icons/navigation/profile.svg';
+
+  /// File path: assets/icons/navigation/vehicles.svg
+  String get vehicles => 'assets/icons/navigation/vehicles.svg';
+
+  /// List of all assets
+  List<String> get values => [chat, home, orders, profile, vehicles];
+}
+
+class $AssetsIconsOrdersGen {
+  const $AssetsIconsOrdersGen();
+
+  /// File path: assets/icons/orders/.gitkeep
+  String get aGitkeep => 'assets/icons/orders/.gitkeep';
+
+  /// List of all assets
+  List<String> get values => [aGitkeep];
+}
+
+class $AssetsIconsServicesGen {
+  const $AssetsIconsServicesGen();
+
+  /// File path: assets/icons/services/quick_rescue.svg
+  String get quickRescue => 'assets/icons/services/quick_rescue.svg';
+
+  /// File path: assets/icons/services/tow_truck_hydraulic.svg
+  String get towTruckHydraulic =>
+      'assets/icons/services/tow_truck_hydraulic.svg';
+
+  /// File path: assets/icons/services/tow_truck_normal.svg
+  String get towTruckNormal => 'assets/icons/services/tow_truck_normal.svg';
+
+  /// List of all assets
+  List<String> get values => [quickRescue, towTruckHydraulic, towTruckNormal];
+}
+
+class $AssetsIconsVehiclesGen {
+  const $AssetsIconsVehiclesGen();
+
+  /// File path: assets/icons/vehicles/.gitkeep
+  String get aGitkeep => 'assets/icons/vehicles/.gitkeep';
+
+  /// List of all assets
+  List<String> get values => [aGitkeep];
+}
+
 class Assets {
   const Assets._();
 
   static const $AssetsLangGen lang = $AssetsLangGen();
   static const $AssetsFontsGen fonts = $AssetsFontsGen();
+  static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImgGen img = $AssetsImgGen();
+  static const $AssetsMapStylesGen mapStyles = $AssetsMapStylesGen();
   static const $AssetsSvgGen svg = $AssetsSvgGen();
 }
 
