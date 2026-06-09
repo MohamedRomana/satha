@@ -13,8 +13,6 @@ import 'core/routing/routes.dart';
 import 'gen/fonts.gen.dart';
 import 'generated/codegen_loader.g.dart';
 
-final navigatorKey = GlobalKey<NavigatorState>();
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SystemChrome.setPreferredOrientations([
@@ -56,9 +54,11 @@ class MyApp extends StatelessWidget {
         return GestureDetector(
           onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
           child: MaterialApp(
+            // إعادة المفتاح عند تغيير اللغة تُعيد بناء كامل التطبيق (بما فيه الشاشات
+            // المفتوحة) فوراً باللغة الجديدة بدل بقاء النصوص القديمة.
+            key: ValueKey(context.locale.languageCode),
             title: 'سطحة',
             debugShowCheckedModeBanner: false,
-            navigatorKey: navigatorKey,
             theme: _buildTheme(),
             localizationsDelegates: context.localizationDelegates,
             supportedLocales: context.supportedLocales,

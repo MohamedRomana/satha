@@ -1044,7 +1044,10 @@ class CodegenLoader extends AssetLoader{
   "submitRequest": "إرسال الطلب",
   "confirmAndSubmit": "تأكيد وإرسال",
   "loginToYourAccount": "سجّل الدخول إلى حسابك",
-  "invalidCredentials": "بيانات الدخول غير صحيحة."
+  "invalidCredentials": "بيانات الدخول غير صحيحة.",
+  "agreeTermsPrefix": "أوافق على",
+  "termsAndConditions": "الشروط والأحكام",
+  "termsContent": "مرحبًا بك في تطبيق سطحة. باستخدامك للتطبيق فإنك توافق على الشروط والأحكام التالية:\n\n١) الخدمة: يوفّر تطبيق سطحة وسيلة للتواصل بين العملاء والسائقين لطلب خدمات إنقاذ ونقل السيارات.\n\n٢) الحساب: أنت مسؤول عن صحة البيانات التي تُدخلها والحفاظ على سرية بيانات الدخول الخاصة بك.\n\n٣) السائقون: يخضع تفعيل حساب السائق لمراجعة الإدارة والتأكد من صحة المستندات قبل الموافقة.\n\n٤) الاستخدام المقبول: يُمنع استخدام التطبيق لأي غرض غير قانوني أو ينتهك حقوق الآخرين.\n\n٥) الدفع والأسعار: تُعرض الأسعار من السائقين بشكل تقديري، ويتم الاتفاق النهائي بين الطرفين.\n\n٦) الخصوصية: نحرص على حماية بياناتك ولا نشاركها إلا بما يلزم لتقديم الخدمة.\n\n٧) التعديلات: يحق لنا تحديث هذه الشروط في أي وقت، وسيتم إشعارك بالتغييرات الجوهرية.\n\nباستمرارك في استخدام التطبيق فإنك تُقرّ بقراءتك لهذه الشروط وموافقتك عليها."
 };
 static const Map<String,dynamic> _en = {
   "chooseLang": "Choose the appropriate language",
@@ -2075,7 +2078,10 @@ static const Map<String,dynamic> _en = {
   "submitRequest": "Submit request",
   "confirmAndSubmit": "Confirm and submit",
   "loginToYourAccount": "Sign in to your account",
-  "invalidCredentials": "Invalid login credentials."
+  "invalidCredentials": "Invalid login credentials.",
+  "agreeTermsPrefix": "I agree to the",
+  "termsAndConditions": "Terms and Conditions",
+  "termsContent": "Welcome to Sat7a. By using the app you agree to the following terms and conditions:\n\n1) Service: Sat7a connects customers with drivers to request car rescue and towing services.\n\n2) Account: You are responsible for the accuracy of the data you enter and for keeping your login credentials confidential.\n\n3) Drivers: Driver account activation is subject to administration review and document verification before approval.\n\n4) Acceptable use: The app may not be used for any unlawful purpose or in a way that violates the rights of others.\n\n5) Payment & pricing: Prices shown by drivers are estimates; the final agreement is made between both parties.\n\n6) Privacy: We protect your data and only share it as needed to provide the service.\n\n7) Changes: We may update these terms at any time and will notify you of material changes.\n\nBy continuing to use the app you acknowledge that you have read and agreed to these terms."
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": _ar, "en": _en};
 }

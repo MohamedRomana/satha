@@ -1,6 +1,6 @@
-import '../../../../core/constants/app_constants.dart';
-import '../../../../core/networking/api_error_model.dart';
-import '../../../../core/networking/api_result.dart';
+import 'package:satha/core/constants/app_constants.dart';
+import 'package:satha/core/networking/api_error_model.dart';
+import 'package:satha/core/networking/api_result.dart';
 import '../apis/auth_api_service.dart';
 import '../datasources/mock_auth_data_source.dart';
 import '../models/auth_request_models.dart';

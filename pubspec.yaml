@@ -88,9 +88,8 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-# ملاحظة: لتشغيل build_runner على Dart 3.10 (الإصدار 9.x من objective_c يضيف
-# hook/build.dart يكسر مولّد الكود) فعّل الـ override التالي مؤقتًا أثناء التوليد فقط
-# ثم احذفه قبل بناء/تشغيل التطبيق (يكسر path_provider على Android لو بقي):
+# ملاحظة: لتشغيل build_runner على Dart 3.10 فعّل override التالي مؤقتًا أثناء التوليد فقط
+# ثم علّقه قبل بناء/تشغيل التطبيق (يكسر path_provider على Android لو بقي):
 #   dependency_overrides:
 #     objective_c: 7.1.0
 

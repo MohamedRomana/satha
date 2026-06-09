@@ -1031,5 +1031,8 @@ abstract class  LocaleKeys {
   static const confirmAndSubmit = 'confirmAndSubmit';
   static const loginToYourAccount = 'loginToYourAccount';
   static const invalidCredentials = 'invalidCredentials';
+  static const agreeTermsPrefix = 'agreeTermsPrefix';
+  static const termsAndConditions = 'termsAndConditions';
+  static const termsContent = 'termsContent';
 
 }

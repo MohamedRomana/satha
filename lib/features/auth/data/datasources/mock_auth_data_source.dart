@@ -1,5 +1,5 @@
-import '../../../../core/constants/app_constants.dart';
-import '../../../../generated/locale_keys.g.dart';
+import 'package:satha/core/constants/app_constants.dart';
+import 'package:satha/generated/locale_keys.g.dart';
 import '../models/auth_request_models.dart';
 import '../models/auth_response_model.dart';
 import '../models/user_model.dart';

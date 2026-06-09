@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 
-import '../../../../core/networking/api_constants.dart';
+import 'package:satha/core/networking/api_constants.dart';
 import '../models/auth_request_models.dart';
 import '../models/auth_response_model.dart';
 

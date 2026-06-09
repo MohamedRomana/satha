@@ -50,15 +50,17 @@ lib/
 │   ├── networking/                # dio_factory · api_result(Freezed) · api_error_model · ...
 │   ├── routing/                   # routes.dart · app_router.dart (راوتر مركزي)
 │   └── widgets/                   # AppLogo · PrimaryButton · SathaField · PasswordField · OTP ...
-├── features/
-│   ├── splash/ui/splash_screen.dart
-│   ├── onboarding/                # data/models · logic/cubit · ui (screen + scenes + indicator)
-│   ├── role_selection/ui          # screen + role_selection_card
+├── features/                      # البنية حسب CLAUDE.md (start / auth subfeatures / users)
+│   ├── start/                     # splash · on_boarding · role_selection
 │   ├── auth/
-│   │   ├── data/                  # apis (Retrofit) · models (JsonSerializable) · datasources (mock) · repos · auth_session
-│   │   ├── logic/                 # login · customer_register · driver_register · forgot · otp · reset (Cubit + Freezed state)
-│   │   └── ui/                    # شاشات + widgets (auth_scaffold, document_upload_card, ...)
-│   └── temporary_home/ui          # شاشات الوجهة المؤقتة (عميل/سائق/إدارة)
+│   │   ├── data/                  # apis (Retrofit) · models (JsonSerializable) · datasources (mock) · repos · auth_session  (مشترك)
+│   │   ├── widgets/               # widgets مشتركة (auth_scaffold, otp_input, terms_sheet, ...)
+│   │   ├── login/                 # logic (Cubit+Freezed) + ui
+│   │   ├── customer_register/     # logic + ui
+│   │   ├── driver_register/       # logic + ui (+ ui/widgets خطوات التسجيل)
+│   │   ├── forgot_password/ · otp/ · reset_password/
+│   │   ├── admin_login/ui · driver_register_pending/ui
+│   └── users/                     # user/ (عميل) · provider/ (سائق) · admin/ · shared/  (شاشات الوجهة)
 ├── gen/                           # flutter_gen (assets/fonts)
 └── generated/                     # easy_localization codegen (locale_keys + codegen_loader)
 ```

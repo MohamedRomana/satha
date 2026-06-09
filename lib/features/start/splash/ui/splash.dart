@@ -2,16 +2,16 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../core/cache/cache_helper.dart';
-import '../../../core/constants/colors.dart';
-import '../../../core/constants/gradients.dart';
-import '../../../core/helper/extentions.dart';
-import '../../../core/routing/routes.dart';
-import '../../../core/widgets/app_logo.dart';
-import '../../../gen/fonts.gen.dart';
-import '../../../generated/locale_keys.g.dart';
-import '../../auth/data/auth_session.dart';
-import '../../auth/data/models/user_role.dart';
+import 'package:satha/core/cache/cache_helper.dart';
+import 'package:satha/core/constants/colors.dart';
+import 'package:satha/core/constants/gradients.dart';
+import 'package:satha/core/helper/extentions.dart';
+import 'package:satha/core/routing/routes.dart';
+import 'package:satha/core/widgets/app_logo.dart';
+import 'package:satha/gen/fonts.gen.dart';
+import 'package:satha/generated/locale_keys.g.dart';
+import 'package:satha/features/auth/data/auth_session.dart';
+import 'package:satha/features/auth/data/models/user_role.dart';
 
 /// شاشة البداية المتحرّكة — تجهّز التطبيق ثم توجّه للوجهة المناسبة.
 class SplashScreen extends StatefulWidget {
