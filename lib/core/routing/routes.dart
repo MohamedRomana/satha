@@ -21,6 +21,9 @@ class Routes {
   static const String vehicleDetails = '/vehicleDetails';
   static const String addVehicle = '/addVehicle';
   static const String editVehicle = '/editVehicle';
+
+  // ---- العميل: إنشاء الطلب ----
+  static const String createOrderFlow = '/createOrderFlow';
   static const String logIn = '/logIn';
   static const String register = '/register';
   static const String otp = '/otp';

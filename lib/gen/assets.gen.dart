@@ -406,8 +406,42 @@ class $AssetsIconsOrdersGen {
   /// File path: assets/icons/orders/.gitkeep
   String get aGitkeep => 'assets/icons/orders/.gitkeep';
 
+  /// File path: assets/icons/orders/accident.svg
+  String get accident => 'assets/icons/orders/accident.svg';
+
+  /// File path: assets/icons/orders/battery.svg
+  String get battery => 'assets/icons/orders/battery.svg';
+
+  /// File path: assets/icons/orders/breakdown.svg
+  String get breakdown => 'assets/icons/orders/breakdown.svg';
+
+  /// File path: assets/icons/orders/car_not_working.svg
+  String get carNotWorking => 'assets/icons/orders/car_not_working.svg';
+
+  /// File path: assets/icons/orders/fuel.svg
+  String get fuel => 'assets/icons/orders/fuel.svg';
+
+  /// File path: assets/icons/orders/other.svg
+  String get other => 'assets/icons/orders/other.svg';
+
+  /// File path: assets/icons/orders/tire.svg
+  String get tire => 'assets/icons/orders/tire.svg';
+
+  /// File path: assets/icons/orders/transport.svg
+  String get transport => 'assets/icons/orders/transport.svg';
+
   /// List of all assets
-  List<String> get values => [aGitkeep];
+  List<String> get values => [
+    aGitkeep,
+    accident,
+    battery,
+    breakdown,
+    carNotWorking,
+    fuel,
+    other,
+    tire,
+    transport,
+  ];
 }
 
 class $AssetsIconsServicesGen {

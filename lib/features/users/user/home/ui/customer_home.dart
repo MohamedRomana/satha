@@ -5,9 +5,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import 'package:satha/core/constants/colors.dart';
+import 'package:satha/core/helper/extentions.dart';
+import 'package:satha/core/routing/routes.dart';
 import 'package:satha/core/widgets/flash_message.dart';
 import 'package:satha/gen/fonts.gen.dart';
 import 'package:satha/generated/locale_keys.g.dart';
+import 'package:satha/features/users/user/create_order/data/models/order_flow_models.dart';
 import 'package:satha/features/users/user/home/data/models/home_models.dart';
 import 'package:satha/features/users/user/home/logic/home_cubit.dart';
 import 'package:satha/features/users/user/home/logic/home_state.dart';
@@ -44,6 +47,18 @@ class _CustomerHomeView extends StatelessWidget {
 
   void _goToTab(BuildContext context, int index) =>
       context.read<MainLayoutCubit>().changeTab(index);
+
+  void _openOrder(BuildContext context, {OrderServiceType? service}) {
+    context.pushNamed(
+      Routes.createOrderFlow,
+      arguments: service == null ? null : {'service': service},
+    );
+  }
+
+  OrderServiceType _mapService(CustomerServiceType type) =>
+      type == CustomerServiceType.hydraulic
+          ? OrderServiceType.hydraulic
+          : OrderServiceType.normal;
 
   @override
   Widget build(BuildContext context) {
@@ -90,10 +105,10 @@ class _CustomerHomeView extends StatelessWidget {
       SizedBox(height: 12.h),
       ServiceCards(
         services: data.services,
-        onSelect: (_) => _comingSoon(context),
+        onSelect: (type) => _openOrder(context, service: _mapService(type)),
       ),
       SizedBox(height: 18.h),
-      QuickRescueCard(onTap: () => _comingSoon(context)),
+      QuickRescueCard(onTap: () => _openOrder(context)),
       SizedBox(height: 24.h),
       RecentOrdersPreview(
         orders: data.recentOrders,

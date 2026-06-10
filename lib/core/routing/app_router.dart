@@ -27,6 +27,8 @@ import '../../features/users/user/vehicles/data/models/vehicle_model.dart';
 import '../../features/users/user/vehicles/ui/add_vehicle_screen.dart';
 import '../../features/users/user/vehicles/ui/edit_vehicle_screen.dart';
 import '../../features/users/user/vehicles/ui/vehicle_details_screen.dart';
+import '../../features/users/user/create_order/data/models/order_flow_models.dart';
+import '../../features/users/user/create_order/ui/create_order_flow.dart';
 import '../../generated/locale_keys.g.dart';
 import '../di/dependancy_injection.dart';
 import 'routes.dart';
@@ -152,6 +154,14 @@ class AppRouter {
         return _route(
           settings,
           VehicleDetailsScreen(vehicle: args!['vehicle'] as VehicleModel),
+        );
+
+      case Routes.createOrderFlow:
+        return _route(
+          settings,
+          CreateOrderFlowScreen(
+            initialService: args?['service'] as OrderServiceType?,
+          ),
         );
 
       case Routes.addVehicle:

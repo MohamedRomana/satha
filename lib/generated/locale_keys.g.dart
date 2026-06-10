@@ -1123,5 +1123,34 @@ abstract class  LocaleKeys {
   static const selectColor = 'selectColor';
   static const makeDefaultVehicle = 'makeDefaultVehicle';
   static const selectImageSourceTitle = 'selectImageSourceTitle';
+  static const stepService = 'stepService';
+  static const stepVehicle = 'stepVehicle';
+  static const stepProblem = 'stepProblem';
+  static const stepLocation = 'stepLocation';
+  static const stepConfirm = 'stepConfirm';
+  static const chooseTowType = 'chooseTowType';
+  static const chooseTowTypeDesc = 'chooseTowTypeDesc';
+  static const chooseVehicleTitle = 'chooseVehicleTitle';
+  static const chooseVehicleDesc = 'chooseVehicleDesc';
+  static const problemTitle = 'problemTitle';
+  static const problemDesc = 'problemDesc';
+  static const additionalDetails = 'additionalDetails';
+  static const probBreakdown = 'probBreakdown';
+  static const probAccident = 'probAccident';
+  static const probNotWorking = 'probNotWorking';
+  static const probTire = 'probTire';
+  static const probBattery = 'probBattery';
+  static const probFuel = 'probFuel';
+  static const probTransport = 'probTransport';
+  static const probOther = 'probOther';
+  static const selectServiceRequired = 'selectServiceRequired';
+  static const selectVehicleRequired = 'selectVehicleRequired';
+  static const selectProblemRequired = 'selectProblemRequired';
+  static const leaveOrderTitle = 'leaveOrderTitle';
+  static const leaveOrderDesc = 'leaveOrderDesc';
+  static const stayBtn = 'stayBtn';
+  static const leaveBtn = 'leaveBtn';
+  static const addNoVehicleHint = 'addNoVehicleHint';
+  static const locationStepSoon = 'locationStepSoon';
 
 }
