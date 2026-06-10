@@ -1132,7 +1132,11 @@ class CodegenLoader extends AssetLoader{
   "vehicleDeletedMsg": "تم حذف السيارة بنجاح",
   "defaultVehicleSetMsg": "تم تعيين السيارة الافتراضية",
   "galleryWord": "المعرض",
-  "cameraWord": "الكاميرا"
+  "cameraWord": "الكاميرا",
+  "selectBrand": "اختر الماركة",
+  "selectColor": "اختر اللون",
+  "makeDefaultVehicle": "اجعلها السيارة الافتراضية",
+  "selectImageSourceTitle": "اختر مصدر الصورة"
 };
 static const Map<String,dynamic> _en = {
   "chooseLang": "Choose the appropriate language",
@@ -2251,7 +2255,11 @@ static const Map<String,dynamic> _en = {
   "vehicleDeletedMsg": "Vehicle deleted successfully",
   "defaultVehicleSetMsg": "Default vehicle set",
   "galleryWord": "Gallery",
-  "cameraWord": "Camera"
+  "cameraWord": "Camera",
+  "selectBrand": "Select brand",
+  "selectColor": "Select color",
+  "makeDefaultVehicle": "Make it the default vehicle",
+  "selectImageSourceTitle": "Select image source"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": _ar, "en": _en};
 }

@@ -1119,5 +1119,9 @@ abstract class  LocaleKeys {
   static const defaultVehicleSetMsg = 'defaultVehicleSetMsg';
   static const galleryWord = 'galleryWord';
   static const cameraWord = 'cameraWord';
+  static const selectBrand = 'selectBrand';
+  static const selectColor = 'selectColor';
+  static const makeDefaultVehicle = 'makeDefaultVehicle';
+  static const selectImageSourceTitle = 'selectImageSourceTitle';
 
 }

@@ -1118,5 +1118,9 @@
   "vehicleDeletedMsg": "Vehicle deleted successfully",
   "defaultVehicleSetMsg": "Default vehicle set",
   "galleryWord": "Gallery",
-  "cameraWord": "Camera"
+  "cameraWord": "Camera",
+  "selectBrand": "Select brand",
+  "selectColor": "Select color",
+  "makeDefaultVehicle": "Make it the default vehicle",
+  "selectImageSourceTitle": "Select image source"
 }

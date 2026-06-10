@@ -1119,5 +1119,9 @@
   "vehicleDeletedMsg": "تم حذف السيارة بنجاح",
   "defaultVehicleSetMsg": "تم تعيين السيارة الافتراضية",
   "galleryWord": "المعرض",
-  "cameraWord": "الكاميرا"
+  "cameraWord": "الكاميرا",
+  "selectBrand": "اختر الماركة",
+  "selectColor": "اختر اللون",
+  "makeDefaultVehicle": "اجعلها السيارة الافتراضية",
+  "selectImageSourceTitle": "اختر مصدر الصورة"
 }
