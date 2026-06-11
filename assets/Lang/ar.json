@@ -1153,5 +1153,26 @@
   "stayBtn": "البقاء",
   "leaveBtn": "مغادرة",
   "addNoVehicleHint": "ليس لديك سيارات بعد، أضف سيارة للمتابعة.",
-  "locationStepSoon": "خطوة تحديد الموقع ستتوفّر في التحديث القادم."
+  "locationStepSoon": "خطوة تحديد الموقع ستتوفّر في التحديث القادم.",
+
+  "pickupPoint": "نقطة البداية",
+  "destinationPoint": "نقطة الوصول",
+  "selectPickupHint": "اختر نقطة البداية",
+  "selectDestHint": "اختر نقطة الوصول",
+  "confirmLocationBtn": "تأكيد الموقع",
+  "confirmLocationsBtn": "تأكيد المواقع",
+  "useMyLocation": "استخدم موقعي الحالي",
+  "searchLocationHint": "ابحث عن موقع",
+  "distanceLabel": "المسافة",
+  "durationLabel": "المدة",
+  "kmUnit": "كم",
+  "minUnit": "دقيقة",
+  "recentLocationsTitle": "مواقع حديثة",
+  "moveMapToSelect": "حرّك الخريطة لتحديد الموقع ثم اضغط تأكيد",
+  "permNeedAccess": "نحتاج إذن الوصول إلى موقعك لتحديد نقطة البداية بسهولة.",
+  "servicesDisabledMsg": "يرجى تفعيل خدمات الموقع من إعدادات الهاتف.",
+  "permDeniedMsg": "تم رفض إذن الموقع. يمكنك تحديد الموقع يدويًا على الخريطة.",
+  "allowLocationBtn": "السماح بالوصول للموقع",
+  "openSettingsBtn": "فتح الإعدادات",
+  "selectManuallyBtn": "تحديد يدويًا"
 }

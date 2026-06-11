@@ -24,6 +24,7 @@ class Routes {
 
   // ---- العميل: إنشاء الطلب ----
   static const String createOrderFlow = '/createOrderFlow';
+  static const String selectOrderLocations = '/selectOrderLocations';
   static const String logIn = '/logIn';
   static const String register = '/register';
   static const String otp = '/otp';

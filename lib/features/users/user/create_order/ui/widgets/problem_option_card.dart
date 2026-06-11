@@ -29,7 +29,7 @@ class ProblemOptionCard extends StatelessWidget {
       },
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
-        padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 14.h),
+        padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 1.h),
         decoration: BoxDecoration(
           color: selected
               ? AppColors.softOrange.withValues(alpha: 0.6)

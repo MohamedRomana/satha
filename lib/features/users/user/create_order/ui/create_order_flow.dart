@@ -11,10 +11,10 @@ import 'package:satha/core/widgets/flash_message.dart';
 import 'package:satha/core/widgets/primary_button.dart';
 import 'package:satha/gen/fonts.gen.dart';
 import 'package:satha/generated/locale_keys.g.dart';
+import '../data/models/location_models.dart';
 import '../data/models/order_flow_models.dart';
 import '../logic/create_order_cubit.dart';
 import 'widgets/order_progress_indicator.dart';
-import 'widgets/step_location_placeholder.dart';
 import 'widgets/step_problem.dart';
 import 'widgets/step_service.dart';
 import 'widgets/step_vehicle.dart';
@@ -40,8 +40,8 @@ class CreateOrderFlowScreen extends StatelessWidget {
 class _CreateOrderView extends StatelessWidget {
   const _CreateOrderView();
 
-  // عدد الصفحات المنفّذة حاليًا (الخدمة/السيارة/المشكلة/الموقع المؤقت).
-  static const int _pages = 4;
+  // صفحات الـ PageView (الخدمة/السيارة/المشكلة) — الموقع شاشة مستقلة.
+  static const int _pages = 3;
 
   static const _stepLabels = [
     LocaleKeys.stepService,
@@ -119,15 +119,28 @@ class _CreateOrderView extends StatelessWidget {
       return;
     }
     if (step >= _pages - 1) {
-      // الخطوة المؤقتة (الموقع) — تكملة التدفّق في المرحلة التالية.
-      showFlashMessage(
-        message: LocaleKeys.locationStepSoon.tr(),
-        type: FlashMessageType.warning,
-        context: context,
-      );
+      _openLocations(context);
       return;
     }
     cubit.next();
+  }
+
+  Future<void> _openLocations(BuildContext context) async {
+    final cubit = context.read<CreateOrderCubit>();
+    final result = await context.pushNamed(Routes.selectOrderLocations);
+    if (result is Map && context.mounted) {
+      cubit.setLocations(
+        pickup: result['pickup'] as LocationModel?,
+        destination: result['destination'] as LocationModel?,
+        route: result['route'] as RouteInfoModel?,
+      );
+      // المرحلة التالية: شاشة ملخّص الطلب.
+      showFlashMessage(
+        message: LocaleKeys.comingSoon.tr(),
+        type: FlashMessageType.warning,
+        context: context,
+      );
+    }
   }
 
   @override
@@ -179,7 +192,6 @@ class _CreateOrderView extends StatelessWidget {
                         onAddVehicle: () => _addVehicle(context),
                       ),
                       StepProblem(cubit: cubit),
-                      const StepLocationPlaceholder(),
                     ],
                   ),
                 ),

@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../vehicles/data/models/vehicle_model.dart';
 import '../../vehicles/data/repos/vehicles_repository.dart';
+import '../data/models/location_models.dart';
 import '../data/models/order_flow_models.dart';
 
 /// كيوبت تدفّق إنشاء الطلب — يحفظ المسودّة عبر الخطوات.
@@ -26,6 +27,22 @@ class CreateOrderCubit extends Cubit<int> {
   VehicleModel? vehicle;
   OrderProblemType? problem;
   final List<File> problemImages = [];
+
+  // ---- المواقع (المرحلة 4) ----
+  LocationModel? pickup;
+  LocationModel? destination;
+  RouteInfoModel? route;
+
+  void setLocations({
+    LocationModel? pickup,
+    LocationModel? destination,
+    RouteInfoModel? route,
+  }) {
+    this.pickup = pickup;
+    this.destination = destination;
+    this.route = route;
+    _refresh();
+  }
 
   // ---- بيانات السيارات ----
   bool loadingVehicles = false;

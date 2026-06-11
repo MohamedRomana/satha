@@ -1152,5 +1152,25 @@ abstract class  LocaleKeys {
   static const leaveBtn = 'leaveBtn';
   static const addNoVehicleHint = 'addNoVehicleHint';
   static const locationStepSoon = 'locationStepSoon';
+  static const pickupPoint = 'pickupPoint';
+  static const destinationPoint = 'destinationPoint';
+  static const selectPickupHint = 'selectPickupHint';
+  static const selectDestHint = 'selectDestHint';
+  static const confirmLocationBtn = 'confirmLocationBtn';
+  static const confirmLocationsBtn = 'confirmLocationsBtn';
+  static const useMyLocation = 'useMyLocation';
+  static const searchLocationHint = 'searchLocationHint';
+  static const distanceLabel = 'distanceLabel';
+  static const durationLabel = 'durationLabel';
+  static const kmUnit = 'kmUnit';
+  static const minUnit = 'minUnit';
+  static const recentLocationsTitle = 'recentLocationsTitle';
+  static const moveMapToSelect = 'moveMapToSelect';
+  static const permNeedAccess = 'permNeedAccess';
+  static const servicesDisabledMsg = 'servicesDisabledMsg';
+  static const permDeniedMsg = 'permDeniedMsg';
+  static const allowLocationBtn = 'allowLocationBtn';
+  static const openSettingsBtn = 'openSettingsBtn';
+  static const selectManuallyBtn = 'selectManuallyBtn';
 
 }

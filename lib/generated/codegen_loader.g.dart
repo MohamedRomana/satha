@@ -1165,7 +1165,27 @@ class CodegenLoader extends AssetLoader{
   "stayBtn": "البقاء",
   "leaveBtn": "مغادرة",
   "addNoVehicleHint": "ليس لديك سيارات بعد، أضف سيارة للمتابعة.",
-  "locationStepSoon": "خطوة تحديد الموقع ستتوفّر في التحديث القادم."
+  "locationStepSoon": "خطوة تحديد الموقع ستتوفّر في التحديث القادم.",
+  "pickupPoint": "نقطة البداية",
+  "destinationPoint": "نقطة الوصول",
+  "selectPickupHint": "اختر نقطة البداية",
+  "selectDestHint": "اختر نقطة الوصول",
+  "confirmLocationBtn": "تأكيد الموقع",
+  "confirmLocationsBtn": "تأكيد المواقع",
+  "useMyLocation": "استخدم موقعي الحالي",
+  "searchLocationHint": "ابحث عن موقع",
+  "distanceLabel": "المسافة",
+  "durationLabel": "المدة",
+  "kmUnit": "كم",
+  "minUnit": "دقيقة",
+  "recentLocationsTitle": "مواقع حديثة",
+  "moveMapToSelect": "حرّك الخريطة لتحديد الموقع ثم اضغط تأكيد",
+  "permNeedAccess": "نحتاج إذن الوصول إلى موقعك لتحديد نقطة البداية بسهولة.",
+  "servicesDisabledMsg": "يرجى تفعيل خدمات الموقع من إعدادات الهاتف.",
+  "permDeniedMsg": "تم رفض إذن الموقع. يمكنك تحديد الموقع يدويًا على الخريطة.",
+  "allowLocationBtn": "السماح بالوصول للموقع",
+  "openSettingsBtn": "فتح الإعدادات",
+  "selectManuallyBtn": "تحديد يدويًا"
 };
 static const Map<String,dynamic> _en = {
   "chooseLang": "Choose the appropriate language",
@@ -2317,7 +2337,27 @@ static const Map<String,dynamic> _en = {
   "stayBtn": "Stay",
   "leaveBtn": "Leave",
   "addNoVehicleHint": "You have no vehicles yet, add one to continue.",
-  "locationStepSoon": "The location selection step will be available in the next update."
+  "locationStepSoon": "The location selection step will be available in the next update.",
+  "pickupPoint": "Pickup point",
+  "destinationPoint": "Destination",
+  "selectPickupHint": "Select the pickup point",
+  "selectDestHint": "Select the destination",
+  "confirmLocationBtn": "Confirm location",
+  "confirmLocationsBtn": "Confirm locations",
+  "useMyLocation": "Use my current location",
+  "searchLocationHint": "Search for a location",
+  "distanceLabel": "Distance",
+  "durationLabel": "Duration",
+  "kmUnit": "km",
+  "minUnit": "min",
+  "recentLocationsTitle": "Recent locations",
+  "moveMapToSelect": "Move the map to set the location, then tap confirm",
+  "permNeedAccess": "We need access to your location to set the pickup point easily.",
+  "servicesDisabledMsg": "Please enable location services from your phone settings.",
+  "permDeniedMsg": "Location permission denied. You can set the location manually on the map.",
+  "allowLocationBtn": "Allow location access",
+  "openSettingsBtn": "Open settings",
+  "selectManuallyBtn": "Set manually"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": _ar, "en": _en};
 }

@@ -1152,5 +1152,26 @@
   "stayBtn": "Stay",
   "leaveBtn": "Leave",
   "addNoVehicleHint": "You have no vehicles yet, add one to continue.",
-  "locationStepSoon": "The location selection step will be available in the next update."
+  "locationStepSoon": "The location selection step will be available in the next update.",
+
+  "pickupPoint": "Pickup point",
+  "destinationPoint": "Destination",
+  "selectPickupHint": "Select the pickup point",
+  "selectDestHint": "Select the destination",
+  "confirmLocationBtn": "Confirm location",
+  "confirmLocationsBtn": "Confirm locations",
+  "useMyLocation": "Use my current location",
+  "searchLocationHint": "Search for a location",
+  "distanceLabel": "Distance",
+  "durationLabel": "Duration",
+  "kmUnit": "km",
+  "minUnit": "min",
+  "recentLocationsTitle": "Recent locations",
+  "moveMapToSelect": "Move the map to set the location, then tap confirm",
+  "permNeedAccess": "We need access to your location to set the pickup point easily.",
+  "servicesDisabledMsg": "Please enable location services from your phone settings.",
+  "permDeniedMsg": "Location permission denied. You can set the location manually on the map.",
+  "allowLocationBtn": "Allow location access",
+  "openSettingsBtn": "Open settings",
+  "selectManuallyBtn": "Set manually"
 }
