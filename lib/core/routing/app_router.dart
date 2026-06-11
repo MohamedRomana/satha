@@ -30,6 +30,16 @@ import '../../features/users/user/vehicles/ui/vehicle_details_screen.dart';
 import '../../features/users/user/create_order/data/models/order_flow_models.dart';
 import '../../features/users/user/create_order/ui/create_order_flow.dart';
 import '../../features/users/user/create_order/ui/select_order_locations_screen.dart';
+import '../../features/users/user/orders/data/models/driver_public_profile_model.dart';
+import '../../features/users/user/orders/data/models/order_model.dart';
+import '../../features/users/user/orders/ui/customer_live_tracking_screen.dart';
+import '../../features/users/user/orders/ui/customer_order_details_screen.dart';
+import '../../features/users/user/orders/ui/customer_order_invoice_screen.dart';
+import '../../features/users/user/orders/ui/customer_order_offers_screen.dart';
+import '../../features/users/user/orders/ui/driver_public_profile_screen.dart';
+import '../../features/users/user/orders/ui/order_created_success_screen.dart';
+import '../../features/users/user/orders/ui/order_summary_screen.dart';
+import '../../features/users/user/orders/ui/rate_driver_screen.dart';
 import '../../generated/locale_keys.g.dart';
 import '../di/dependancy_injection.dart';
 import 'routes.dart';
@@ -167,6 +177,56 @@ class AppRouter {
 
       case Routes.selectOrderLocations:
         return _route(settings, const SelectOrderLocationsScreen());
+
+      case Routes.orderSummary:
+        return _route(
+          settings,
+          OrderSummaryScreen(draft: args!['draft'] as OrderModel),
+        );
+
+      case Routes.orderCreatedSuccess:
+        return _route(
+          settings,
+          OrderCreatedSuccessScreen(order: args!['order'] as OrderModel),
+        );
+
+      case Routes.orderDetails:
+        return _route(
+          settings,
+          CustomerOrderDetailsScreen(orderId: args!['orderId'] as String),
+        );
+
+      case Routes.orderOffers:
+        return _route(
+          settings,
+          CustomerOrderOffersScreen(orderId: args!['orderId'] as String),
+        );
+
+      case Routes.driverProfile:
+        return _route(
+          settings,
+          DriverPublicProfileScreen(
+            driver: args!['driver'] as DriverPublicProfileModel,
+          ),
+        );
+
+      case Routes.liveTracking:
+        return _route(
+          settings,
+          CustomerLiveTrackingScreen(order: args!['order'] as OrderModel),
+        );
+
+      case Routes.rateDriver:
+        return _route(
+          settings,
+          RateDriverScreen(order: args!['order'] as OrderModel),
+        );
+
+      case Routes.orderInvoice:
+        return _route(
+          settings,
+          CustomerOrderInvoiceScreen(order: args!['order'] as OrderModel),
+        );
 
       case Routes.addVehicle:
         return _route(settings, const AddVehicleScreen());

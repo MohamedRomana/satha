@@ -128,19 +128,18 @@ class _CreateOrderView extends StatelessWidget {
   Future<void> _openLocations(BuildContext context) async {
     final cubit = context.read<CreateOrderCubit>();
     final result = await context.pushNamed(Routes.selectOrderLocations);
-    if (result is Map && context.mounted) {
-      cubit.setLocations(
-        pickup: result['pickup'] as LocationModel?,
-        destination: result['destination'] as LocationModel?,
-        route: result['route'] as RouteInfoModel?,
-      );
-      // المرحلة التالية: شاشة ملخّص الطلب.
-      showFlashMessage(
-        message: LocaleKeys.comingSoon.tr(),
-        type: FlashMessageType.warning,
-        context: context,
-      );
-    }
+    if (result is! Map || !context.mounted) return;
+    cubit.setLocations(
+      pickup: result['pickup'] as LocationModel?,
+      destination: result['destination'] as LocationModel?,
+      route: result['route'] as RouteInfoModel?,
+    );
+    if (!cubit.hasLocations) return;
+    // شاشة ملخّص الطلب قبل الإرسال.
+    context.pushNamed(
+      Routes.orderSummary,
+      arguments: {'draft': cubit.buildDraft()},
+    );
   }
 
   @override

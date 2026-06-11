@@ -25,6 +25,14 @@ class Routes {
   // ---- العميل: إنشاء الطلب ----
   static const String createOrderFlow = '/createOrderFlow';
   static const String selectOrderLocations = '/selectOrderLocations';
+  static const String orderSummary = '/orderSummary';
+  static const String orderCreatedSuccess = '/orderCreatedSuccess';
+
+  // ---- العميل: الطلبات والعروض والتتبّع ----
+  static const String orderOffers = '/orderOffers';
+  static const String liveTracking = '/liveTracking';
+  static const String rateDriver = '/rateDriver';
+  static const String orderInvoice = '/orderInvoice';
   static const String logIn = '/logIn';
   static const String register = '/register';
   static const String otp = '/otp';

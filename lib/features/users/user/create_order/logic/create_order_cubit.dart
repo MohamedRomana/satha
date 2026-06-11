@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../orders/data/models/order_model.dart';
 import '../../vehicles/data/models/vehicle_model.dart';
 import '../../vehicles/data/repos/vehicles_repository.dart';
 import '../data/models/location_models.dart';
@@ -43,6 +44,26 @@ class CreateOrderCubit extends Cubit<int> {
     this.route = route;
     _refresh();
   }
+
+  /// تجهيز مسودّة طلب من البيانات المُدخلة (تُرسَل لشاشة الملخّص).
+  OrderModel buildDraft() => OrderModel(
+    id: '',
+    orderNumber: '',
+    status: OrderStatus.draft,
+    service: service!,
+    vehicle: vehicle!,
+    problem: problem!,
+    description: descriptionController.text.trim().isEmpty
+        ? null
+        : descriptionController.text.trim(),
+    problemImages: problemImages.map((f) => f.path).toList(),
+    pickup: pickup!,
+    destination: destination!,
+    route: route!,
+    createdAt: DateTime.now(),
+  );
+
+  bool get hasLocations => pickup != null && destination != null && route != null;
 
   // ---- بيانات السيارات ----
   bool loadingVehicles = false;

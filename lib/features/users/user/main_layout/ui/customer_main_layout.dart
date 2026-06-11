@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:satha/features/users/user/chats/ui/customer_chats_placeholder.dart';
 import 'package:satha/features/users/user/home/ui/customer_home.dart';
 import 'package:satha/features/users/user/main_layout/logic/main_layout_cubit.dart';
-import 'package:satha/features/users/user/orders/ui/customer_orders_placeholder.dart';
+import 'package:satha/features/users/user/orders/ui/customer_orders_screen.dart';
 import 'package:satha/features/users/user/profile/ui/customer_profile_placeholder.dart';
 import 'package:satha/features/users/user/vehicles/ui/customer_vehicles_screen.dart';
 import 'widgets/customer_bottom_nav.dart';
@@ -15,7 +15,7 @@ class CustomerMainLayout extends StatelessWidget {
 
   static const _tabs = [
     CustomerHomeScreen(),
-    CustomerOrdersPlaceholderScreen(),
+    CustomerOrdersScreen(),
     CustomerVehiclesScreen(),
     CustomerChatsPlaceholderScreen(),
     CustomerProfilePlaceholderScreen(),

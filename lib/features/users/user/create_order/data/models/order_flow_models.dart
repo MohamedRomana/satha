@@ -17,6 +17,15 @@ class ServiceTypeModel {
   });
 }
 
+extension OrderServiceTypeX on OrderServiceType {
+  String get titleKey => this == OrderServiceType.hydraulic
+      ? LocaleKeys.hydraulicTow
+      : LocaleKeys.normalTow;
+  String get icon => this == OrderServiceType.hydraulic
+      ? AppIcons.towTruckHydraulic
+      : AppIcons.towTruckNormal;
+}
+
 /// نوع المشكلة.
 enum OrderProblemType {
   breakdown,
@@ -38,6 +47,13 @@ class ProblemTypeModel {
     required this.titleKey,
     required this.icon,
   });
+}
+
+extension OrderProblemTypeX on OrderProblemType {
+  ProblemTypeModel get model =>
+      kOrderProblems.firstWhere((p) => p.type == this);
+  String get titleKey => model.titleKey;
+  String get icon => model.icon;
 }
 
 const kOrderServices = <ServiceTypeModel>[
