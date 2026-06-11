@@ -91,6 +91,7 @@ class _ContactUsView extends StatelessWidget {
                     label: LocaleKeys.messageText.tr(),
                     prefixIcon: Icons.message_outlined,
                     maxLines: 5,
+                    keyboardType: TextInputType.multiline,
                     textInputAction: TextInputAction.newline,
                     validator: (v) => (v == null || v.trim().isEmpty)
                         ? LocaleKeys.messageValidate.tr()
