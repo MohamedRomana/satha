@@ -1,10 +1,9 @@
 import 'dart:async';
 
+import 'package:audio_waveforms/audio_waveforms.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:record/record.dart';
 
 import 'package:satha/core/constants/colors.dart';
 import 'package:satha/gen/fonts.gen.dart';
@@ -31,7 +30,7 @@ class ChatInputBar extends StatefulWidget {
 
 class _ChatInputBarState extends State<ChatInputBar> {
   final _controller = TextEditingController();
-  final _recorder = AudioRecorder();
+  final RecorderController _rec = RecorderController();
   bool _hasText = false;
   bool _recording = false;
   final _stopwatch = Stopwatch();
@@ -42,7 +41,7 @@ class _ChatInputBarState extends State<ChatInputBar> {
   void dispose() {
     _ticker?.cancel();
     _controller.dispose();
-    _recorder.dispose();
+    _rec.dispose();
     super.dispose();
   }
 
@@ -54,11 +53,9 @@ class _ChatInputBarState extends State<ChatInputBar> {
   }
 
   Future<void> _startRecording() async {
-    if (!await _recorder.hasPermission()) return;
-    final dir = await getTemporaryDirectory();
-    final path =
-        '${dir.path}/voice_${DateTime.now().millisecondsSinceEpoch}.m4a';
-    await _recorder.start(const RecordConfig(), path: path);
+    final granted = await _rec.checkPermission();
+    if (!granted) return;
+    await _rec.record();
     _stopwatch
       ..reset()
       ..start();
@@ -70,19 +67,19 @@ class _ChatInputBarState extends State<ChatInputBar> {
 
   Future<void> _stopAndSend() async {
     final ms = _stopwatch.elapsedMilliseconds;
-    final path = await _recorder.stop();
-    _cleanupRecording();
+    final path = await _rec.stop();
+    _cleanup();
     if (path != null && ms > 500) {
       widget.onSendVoice(path, ms);
     }
   }
 
   Future<void> _cancelRecording() async {
-    await _recorder.cancel();
-    _cleanupRecording();
+    await _rec.stop();
+    _cleanup();
   }
 
-  void _cleanupRecording() {
+  void _cleanup() {
     _ticker?.cancel();
     _stopwatch.stop();
     if (mounted) {
@@ -186,7 +183,8 @@ class _ChatInputBarState extends State<ChatInputBar> {
         Expanded(
           child: Container(
             margin: EdgeInsets.symmetric(horizontal: 6.w),
-            padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 10.h),
+            padding: EdgeInsets.symmetric(horizontal: 12.w),
+            height: 46.h,
             decoration: BoxDecoration(
               color: AppColors.lightBg,
               borderRadius: BorderRadius.circular(24.r),
@@ -195,22 +193,28 @@ class _ChatInputBarState extends State<ChatInputBar> {
             child: Row(
               children: [
                 _PulsingDot(),
-                SizedBox(width: 10.w),
+                SizedBox(width: 8.w),
                 Text(
                   _fmt(_elapsed),
                   style: TextStyle(
-                    fontSize: 14.sp,
+                    fontSize: 13.sp,
                     color: AppColors.mainText,
                     fontFamily: FontFamily.tajawalBold,
                   ),
                 ),
-                SizedBox(width: 10.w),
-                Text(
-                  LocaleKeys.recording.tr(),
-                  style: TextStyle(
-                    fontSize: 12.sp,
-                    color: AppColors.secondaryText,
-                    fontFamily: FontFamily.tajawalRegular,
+                SizedBox(width: 8.w),
+                Expanded(
+                  child: AudioWaveforms(
+                    size: Size(double.infinity, 32.h),
+                    recorderController: _rec,
+                    enableGesture: false,
+                    waveStyle: WaveStyle(
+                      waveColor: AppColors.orange,
+                      showMiddleLine: false,
+                      extendWaveform: true,
+                      spacing: 4.w,
+                      waveThickness: 2.5,
+                    ),
                   ),
                 ),
               ],

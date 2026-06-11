@@ -1,4 +1,6 @@
-import 'package:audioplayers/audioplayers.dart';
+import 'dart:async';
+
+import 'package:audio_waveforms/audio_waveforms.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -6,7 +8,7 @@ import 'package:satha/core/constants/colors.dart';
 import 'package:satha/gen/fonts.gen.dart';
 import '../../data/models/message_model.dart';
 
-/// فقاعة رسالة صوتية: تشغيل/إيقاف + شريط تقدّم + المدّة.
+/// فقاعة رسالة صوتية: تشغيل/إيقاف + موجة صوتية + المدّة.
 class VoiceMessageBubble extends StatefulWidget {
   final MessageModel message;
   final bool me;
@@ -17,50 +19,50 @@ class VoiceMessageBubble extends StatefulWidget {
 }
 
 class _VoiceMessageBubbleState extends State<VoiceMessageBubble> {
-  final _player = AudioPlayer();
+  final PlayerController _controller = PlayerController();
+  StreamSubscription<PlayerState>? _stateSub;
+  bool _prepared = false;
   bool _playing = false;
-  Duration _position = Duration.zero;
-  Duration _total = Duration.zero;
 
   @override
   void initState() {
     super.initState();
-    _total = Duration(milliseconds: widget.message.voiceMs ?? 0);
-    _player.onDurationChanged.listen((d) {
-      if (mounted && d > Duration.zero) setState(() => _total = d);
+    _prepare();
+    _stateSub = _controller.onPlayerStateChanged.listen((state) {
+      if (mounted) setState(() => _playing = state.isPlaying);
     });
-    _player.onPositionChanged.listen((p) {
-      if (mounted) setState(() => _position = p);
-    });
-    _player.onPlayerComplete.listen((_) {
-      if (mounted) {
-        setState(() {
-          _playing = false;
-          _position = Duration.zero;
-        });
-      }
-    });
+  }
+
+  Future<void> _prepare() async {
+    final path = widget.message.voicePath;
+    if (path == null) return;
+    try {
+      await _controller.preparePlayer(path: path, noOfSamples: 48);
+      await _controller.setFinishMode(finishMode: FinishMode.pause);
+      if (mounted) setState(() => _prepared = true);
+    } catch (_) {
+      // تعذّر تجهيز الملف — يُعرض الزر بدون موجة.
+    }
   }
 
   @override
   void dispose() {
-    _player.dispose();
+    _stateSub?.cancel();
+    _controller.dispose();
     super.dispose();
   }
 
   Future<void> _toggle() async {
-    final path = widget.message.voicePath;
-    if (path == null) return;
+    if (!_prepared) return;
     if (_playing) {
-      await _player.pause();
-      if (mounted) setState(() => _playing = false);
+      await _controller.pausePlayer();
     } else {
-      await _player.play(DeviceFileSource(path));
-      if (mounted) setState(() => _playing = true);
+      await _controller.startPlayer();
     }
   }
 
-  String _fmt(Duration d) {
+  String _fmt(int ms) {
+    final d = Duration(milliseconds: ms);
     final m = d.inMinutes.remainder(60).toString().padLeft(2, '0');
     final s = d.inSeconds.remainder(60).toString().padLeft(2, '0');
     return '$m:$s';
@@ -69,14 +71,8 @@ class _VoiceMessageBubbleState extends State<VoiceMessageBubble> {
   @override
   Widget build(BuildContext context) {
     final fg = widget.me ? Colors.white : AppColors.orange;
-    final track = widget.me
-        ? Colors.white.withValues(alpha: 0.4)
-        : AppColors.border;
-    final progress = _total.inMilliseconds == 0
-        ? 0.0
-        : (_position.inMilliseconds / _total.inMilliseconds).clamp(0.0, 1.0);
     return SizedBox(
-      width: 200.w,
+      width: 210.w,
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -104,27 +100,44 @@ class _VoiceMessageBubbleState extends State<VoiceMessageBubble> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(4.r),
-                  child: LinearProgressIndicator(
-                    value: progress == 0 ? null : progress,
-                    minHeight: 4.h,
-                    backgroundColor: track,
-                    valueColor: AlwaysStoppedAnimation(fg),
-                  ),
+                SizedBox(
+                  height: 30.h,
+                  child: _prepared
+                      ? AudioFileWaveforms(
+                          size: Size(140.w, 30.h),
+                          playerController: _controller,
+                          enableSeekGesture: true,
+                          waveformType: WaveformType.fitWidth,
+                          playerWaveStyle: PlayerWaveStyle(
+                            fixedWaveColor: widget.me
+                                ? Colors.white54
+                                : AppColors.border,
+                            liveWaveColor: fg,
+                            waveThickness: 2.5,
+                            spacing: 4.w,
+                          ),
+                        )
+                      : Align(
+                          alignment: AlignmentDirectional.centerStart,
+                          child: Container(
+                            height: 3.h,
+                            width: 130.w,
+                            color: widget.me ? Colors.white54 : AppColors.border,
+                          ),
+                        ),
                 ),
-                SizedBox(height: 6.h),
+                SizedBox(height: 4.h),
                 Row(
                   children: [
                     Icon(Icons.mic_rounded, size: 13.w, color: fg),
                     SizedBox(width: 4.w),
                     Text(
-                      _playing || _position > Duration.zero
-                          ? _fmt(_position)
-                          : _fmt(_total),
+                      _fmt(widget.message.voiceMs ?? 0),
                       style: TextStyle(
                         fontSize: 11.sp,
-                        color: widget.me ? Colors.white70 : AppColors.secondaryText,
+                        color: widget.me
+                            ? Colors.white70
+                            : AppColors.secondaryText,
                         fontFamily: FontFamily.tajawalRegular,
                       ),
                     ),
