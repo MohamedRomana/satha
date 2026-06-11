@@ -125,11 +125,11 @@ class _ReportIssueViewState extends State<_ReportIssueView> {
                     contentPadding: EdgeInsets.all(14.w),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(16.r),
-                      borderSide: const BorderSide(color: AppColors.border),
+                      borderSide: BorderSide(color: AppColors.border),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(16.r),
-                      borderSide: const BorderSide(color: AppColors.border),
+                      borderSide: BorderSide(color: AppColors.border),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(16.r),

@@ -93,7 +93,7 @@ class _OtpSheetState extends State<_OtpSheet> {
                 Container(
                   width: 60.w,
                   height: 60.w,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     color: AppColors.softOrange,
                     shape: BoxShape.circle,
                   ),

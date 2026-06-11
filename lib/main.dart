@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'core/cache/cache_helper.dart';
+import 'core/constants/colors.dart';
 import 'core/di/dependancy_injection.dart';
 import 'core/networking/bloc_observer.dart';
 import 'core/routing/app_router.dart';
@@ -66,6 +67,13 @@ class MyApp extends StatelessWidget {
                   theme: AppTheme.light,
                   darkTheme: AppTheme.dark,
                   themeMode: themeMode,
+                  // يضبط ألوان الأسطح حسب الثيم الفعّال (يشمل وضع النظام) قبل بناء
+                  // أي شاشة، فتظهر ألوان AppColors المتبدّلة بشكل صحيح.
+                  builder: (context, child) {
+                    AppColors.isDark =
+                        Theme.of(context).brightness == Brightness.dark;
+                    return child ?? const SizedBox.shrink();
+                  },
                   localizationsDelegates: context.localizationDelegates,
                   supportedLocales: context.supportedLocales,
                   locale: context.locale,

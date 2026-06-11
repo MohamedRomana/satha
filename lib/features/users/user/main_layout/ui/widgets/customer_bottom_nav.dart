@@ -38,7 +38,7 @@ class CustomerBottomNav extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: AppColors.card,
-        border: const Border(top: BorderSide(color: AppColors.border)),
+        border: Border(top: BorderSide(color: AppColors.border)),
         boxShadow: [
           BoxShadow(
             color: AppColors.navy.withValues(alpha: 0.08),

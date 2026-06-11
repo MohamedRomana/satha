@@ -37,7 +37,7 @@ class DriverRegisterNavBar extends StatelessWidget {
               onPressed: onBack,
               style: OutlinedButton.styleFrom(
                 minimumSize: Size(0, 54.h),
-                side: const BorderSide(color: AppColors.border),
+                side: BorderSide(color: AppColors.border),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(16.r),
                 ),

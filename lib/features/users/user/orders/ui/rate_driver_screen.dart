@@ -98,7 +98,7 @@ class _RatingViewState extends State<_RatingView> {
                 Container(
                   width: 84.w,
                   height: 84.w,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     color: AppColors.softOrange,
                     shape: BoxShape.circle,
                   ),
@@ -165,11 +165,11 @@ class _RatingViewState extends State<_RatingView> {
                     contentPadding: EdgeInsets.all(14.w),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(16.r),
-                      borderSide: const BorderSide(color: AppColors.border),
+                      borderSide: BorderSide(color: AppColors.border),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(16.r),
-                      borderSide: const BorderSide(color: AppColors.border),
+                      borderSide: BorderSide(color: AppColors.border),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(16.r),

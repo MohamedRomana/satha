@@ -209,7 +209,7 @@ class _DetailCard extends StatelessWidget {
       child: Column(
         children: [
           for (var i = 0; i < rows.length; i++) ...[
-            if (i > 0) const Divider(height: 1, color: AppColors.border),
+            if (i > 0) Divider(height: 1, color: AppColors.border),
             Padding(
               padding: EdgeInsets.symmetric(vertical: 14.h),
               child: Row(

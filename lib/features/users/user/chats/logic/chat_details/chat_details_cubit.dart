@@ -60,6 +60,7 @@ class ChatDetailsCubit extends Cubit<ChatDetailsState> {
     double lat,
     double lng, {
     required DateTime now,
+    String? address,
   }) async {
     await _send(
       MessageModel(
@@ -70,6 +71,25 @@ class ChatDetailsCubit extends Cubit<ChatDetailsState> {
         timestamp: now,
         lat: lat,
         lng: lng,
+        address: address,
+      ),
+    );
+  }
+
+  Future<void> sendVoice(
+    String path,
+    int durationMs, {
+    required DateTime now,
+  }) async {
+    await _send(
+      MessageModel(
+        id: '$chatId-out-${_seq++}',
+        chatId: chatId,
+        type: MessageType.voice,
+        fromMe: true,
+        timestamp: now,
+        voicePath: path,
+        voiceMs: durationMs,
       ),
     );
   }

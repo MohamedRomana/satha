@@ -86,7 +86,7 @@ class _EditProfileView extends StatelessWidget {
                           width: 96.w,
                           height: 96.w,
                           clipBehavior: Clip.antiAlias,
-                          decoration: const BoxDecoration(
+                          decoration: BoxDecoration(
                             color: AppColors.softOrange,
                             shape: BoxShape.circle,
                           ),

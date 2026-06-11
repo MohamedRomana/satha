@@ -32,7 +32,7 @@ class LocationPermissionView extends StatelessWidget {
             Container(
               width: 100.w,
               height: 100.w,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 color: AppColors.softOrange,
                 shape: BoxShape.circle,
               ),

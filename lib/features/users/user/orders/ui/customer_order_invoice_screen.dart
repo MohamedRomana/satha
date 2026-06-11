@@ -87,7 +87,7 @@ class CustomerOrderInvoiceScreen extends StatelessWidget {
                   '${inv.discount} ${LocaleKeys.sar.tr()}'),
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 6.h),
-                child: const Divider(color: AppColors.border, height: 1),
+                child: Divider(color: AppColors.border, height: 1),
               ),
               _row(
                 LocaleKeys.total.tr(),

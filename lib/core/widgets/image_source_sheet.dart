@@ -110,7 +110,7 @@ class _SourceOption extends StatelessWidget {
             Container(
               width: 54.w,
               height: 54.w,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 color: AppColors.softOrange,
                 shape: BoxShape.circle,
               ),

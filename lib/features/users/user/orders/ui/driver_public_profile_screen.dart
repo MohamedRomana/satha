@@ -148,7 +148,7 @@ class DriverPublicProfileScreen extends StatelessWidget {
         Container(
           width: 88.w,
           height: 88.w,
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             color: AppColors.softOrange,
             shape: BoxShape.circle,
           ),

@@ -22,6 +22,7 @@ class HomeCubit extends Cubit<HomeState> {
       promos: kHomePromos,
       services: kHomeServices,
       activeOrder: const HomeOrderPreview(
+        orderId: 'o10245',
         orderNumber: 'ST-10245',
         serviceTitleKey: LocaleKeys.normalTow,
         vehicleName: 'Toyota Camry',
@@ -31,6 +32,7 @@ class HomeCubit extends Cubit<HomeState> {
       ),
       recentOrders: const [
         HomeOrderPreview(
+          orderId: 'o10231',
           orderNumber: 'ST-10231',
           serviceTitleKey: LocaleKeys.hydraulicTow,
           vehicleName: 'Hyundai Santa Fe',
@@ -39,6 +41,7 @@ class HomeCubit extends Cubit<HomeState> {
           price: 180,
         ),
         HomeOrderPreview(
+          orderId: 'o10210',
           orderNumber: 'ST-10210',
           serviceTitleKey: LocaleKeys.normalTow,
           vehicleName: 'Ford Ranger',

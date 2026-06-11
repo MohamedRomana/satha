@@ -1242,6 +1242,9 @@
   "paid": "مدفوعة",
   "unpaid": "غير مدفوعة",
 
+  "cannotOpenApp": "تعذّر فتح التطبيق المطلوب",
+  "openInMaps": "فتح في الخرائط",
+  "recording": "جارٍ التسجيل...",
   "sharedLocation": "موقع تمت مشاركته",
   "typeMessage": "اكتب رسالة...",
   "onlineNow": "متصل الآن",

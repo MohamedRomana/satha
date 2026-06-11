@@ -95,7 +95,7 @@ class OrderCard extends StatelessWidget {
             SizedBox(height: 4.h),
             _locationLine(AppColors.navy, order.destination.address),
             SizedBox(height: 12.h),
-            const Divider(color: AppColors.border, height: 1),
+            Divider(color: AppColors.border, height: 1),
             SizedBox(height: 10.h),
             Row(
               children: [

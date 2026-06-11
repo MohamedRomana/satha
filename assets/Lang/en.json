@@ -1241,6 +1241,9 @@
   "paid": "Paid",
   "unpaid": "Unpaid",
 
+  "cannotOpenApp": "Couldn't open the requested app",
+  "openInMaps": "Open in Maps",
+  "recording": "Recording...",
   "sharedLocation": "Shared location",
   "typeMessage": "Type a message...",
   "onlineNow": "Online now",

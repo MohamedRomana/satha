@@ -1236,6 +1236,9 @@ abstract class  LocaleKeys {
   static const paymentStatus = 'paymentStatus';
   static const paid = 'paid';
   static const unpaid = 'unpaid';
+  static const cannotOpenApp = 'cannotOpenApp';
+  static const openInMaps = 'openInMaps';
+  static const recording = 'recording';
   static const sharedLocation = 'sharedLocation';
   static const typeMessage = 'typeMessage';
   static const onlineNow = 'onlineNow';

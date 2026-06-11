@@ -27,7 +27,7 @@ class VehiclesEmptyState extends StatelessWidget {
               Container(
                 width: 110.w,
                 height: 110.w,
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   color: AppColors.softOrange,
                   shape: BoxShape.circle,
                 ),

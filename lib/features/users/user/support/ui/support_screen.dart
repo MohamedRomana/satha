@@ -7,6 +7,7 @@ import 'package:satha/core/constants/colors.dart';
 import 'package:satha/core/di/dependancy_injection.dart';
 import 'package:satha/core/helper/extentions.dart';
 import 'package:satha/core/routing/routes.dart';
+import 'package:satha/core/widgets/flash_message.dart';
 import 'package:satha/gen/fonts.gen.dart';
 import 'package:satha/generated/locale_keys.g.dart';
 import '../data/repos/support_repository.dart';
@@ -15,11 +16,20 @@ import '../data/repos/support_repository.dart';
 class SupportScreen extends StatelessWidget {
   const SupportScreen({super.key});
 
-  Future<void> _launch(Uri uri) async {
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(uri, mode: LaunchMode.externalApplication);
+  Future<void> _launch(BuildContext context, Uri uri) async {
+    try {
+      final ok = await launchUrl(uri, mode: LaunchMode.externalApplication);
+      if (!ok && context.mounted) _failed(context);
+    } catch (_) {
+      if (context.mounted) _failed(context);
     }
   }
+
+  void _failed(BuildContext context) => showFlashMessage(
+    message: LocaleKeys.cannotOpenApp.tr(),
+    type: FlashMessageType.warning,
+    context: context,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +54,7 @@ class SupportScreen extends StatelessWidget {
             Container(
               width: 90.w,
               height: 90.w,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 color: AppColors.softOrange,
                 shape: BoxShape.circle,
               ),
@@ -76,13 +86,14 @@ class SupportScreen extends StatelessWidget {
               icon: Icons.call_rounded,
               color: AppColors.success,
               label: LocaleKeys.call_support.tr(),
-              onTap: () => _launch(Uri.parse('tel:${contact.phone}')),
+              onTap: () => _launch(context, Uri.parse('tel:${contact.phone}')),
             ),
             _action(
               icon: Icons.chat_rounded,
               color: const Color(0xff25D366),
               label: LocaleKeys.whatsapp_support.tr(),
               onTap: () => _launch(
+                context,
                 Uri.parse('https://wa.me/${contact.whatsapp}'),
               ),
             ),
@@ -142,7 +153,7 @@ class SupportScreen extends StatelessWidget {
                 ),
               ),
             ),
-            const Icon(Icons.chevron_left_rounded,
+            Icon(Icons.chevron_left_rounded,
                 color: AppColors.secondaryText),
           ],
         ),

@@ -80,6 +80,7 @@ dependencies:
   shimmer: ^3.0.0
   url_launcher: ^6.3.0
   video_player: ^2.11.1
+  audio_waveforms: ^2.0.0
 
 dev_dependencies:
   build_runner: null

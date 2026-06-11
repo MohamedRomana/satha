@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:satha/core/logic/action_state.dart';
+import 'package:satha/features/users/user/chats/data/models/message_model.dart';
 import 'package:satha/features/users/user/chats/data/repos/mock_chats_repository.dart';
 import 'package:satha/features/users/user/chats/logic/chat_details/chat_details_cubit.dart';
 import 'package:satha/features/users/user/notifications/data/repos/mock_notifications_repository.dart';
@@ -37,6 +38,28 @@ void main() {
       final before = cubit.messages.length;
       await cubit.sendText('   ', now: fixedNow);
       expect(cubit.messages.length, before);
+      await cubit.close();
+    });
+
+    test('إرسال موقع يضيف رسالة موقع بإحداثيات', () async {
+      final cubit = ChatDetailsCubit(MockChatsRepository(), 'c1');
+      await cubit.load();
+      await cubit.sendLocation(24.7, 46.6, now: fixedNow, address: 'الرياض');
+      final m = cubit.messages.last;
+      expect(m.type, MessageType.location);
+      expect(m.lat, 24.7);
+      expect(m.address, 'الرياض');
+      await cubit.close();
+    });
+
+    test('إرسال صوت يضيف رسالة صوتية بمدّة', () async {
+      final cubit = ChatDetailsCubit(MockChatsRepository(), 'c1');
+      await cubit.load();
+      await cubit.sendVoice('/tmp/v.m4a', 3500, now: fixedNow);
+      final m = cubit.messages.last;
+      expect(m.type, MessageType.voice);
+      expect(m.voicePath, '/tmp/v.m4a');
+      expect(m.voiceMs, 3500);
       await cubit.close();
     });
   });

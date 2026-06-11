@@ -110,7 +110,7 @@ class _OrderSummaryScreenState extends State<OrderSummaryScreen> {
           ),
           Container(
             padding: EdgeInsets.fromLTRB(16.w, 12.h, 16.w, 16.h),
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               color: AppColors.card,
               border: Border(top: BorderSide(color: AppColors.border)),
             ),

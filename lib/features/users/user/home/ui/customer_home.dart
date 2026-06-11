@@ -7,7 +7,6 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:satha/core/constants/colors.dart';
 import 'package:satha/core/helper/extentions.dart';
 import 'package:satha/core/routing/routes.dart';
-import 'package:satha/core/widgets/flash_message.dart';
 import 'package:satha/gen/fonts.gen.dart';
 import 'package:satha/generated/locale_keys.g.dart';
 import 'package:satha/features/users/user/create_order/data/models/order_flow_models.dart';
@@ -39,12 +38,6 @@ class CustomerHomeScreen extends StatelessWidget {
 class _CustomerHomeView extends StatelessWidget {
   const _CustomerHomeView();
 
-  void _comingSoon(BuildContext context) => showFlashMessage(
-        message: LocaleKeys.comingSoon.tr(),
-        type: FlashMessageType.warning,
-        context: context,
-      );
-
   void _goToTab(BuildContext context, int index) =>
       context.read<MainLayoutCubit>().changeTab(index);
 
@@ -52,6 +45,13 @@ class _CustomerHomeView extends StatelessWidget {
     context.pushNamed(
       Routes.createOrderFlow,
       arguments: service == null ? null : {'service': service},
+    );
+  }
+
+  void _openOrderDetails(BuildContext context, HomeOrderPreview order) {
+    context.pushNamed(
+      Routes.orderDetails,
+      arguments: {'orderId': order.orderId},
     );
   }
 
@@ -85,7 +85,7 @@ class _CustomerHomeView extends StatelessWidget {
       HomeHeader(
         customerName: data.customerName,
         unreadCount: data.unreadNotifications,
-        onNotifications: () => _comingSoon(context),
+        onNotifications: () => context.pushNamed(Routes.notifications),
       ),
       SizedBox(height: 18.h),
       PromoSlider(promos: data.promos),
@@ -97,7 +97,7 @@ class _CustomerHomeView extends StatelessWidget {
         ),
         ActiveOrderPreview(
           order: data.activeOrder!,
-          onTap: () => _comingSoon(context),
+          onTap: () => _openOrderDetails(context, data.activeOrder!),
         ),
       ],
       SizedBox(height: 22.h),
@@ -113,10 +113,10 @@ class _CustomerHomeView extends StatelessWidget {
       RecentOrdersPreview(
         orders: data.recentOrders,
         onViewAll: () => _goToTab(context, 1),
-        onOrderTap: (_) => _comingSoon(context),
+        onOrderTap: (order) => _openOrderDetails(context, order),
       ),
       SizedBox(height: 20.h),
-      SupportCard(onTap: () => _comingSoon(context)),
+      SupportCard(onTap: () => context.pushNamed(Routes.support)),
       SizedBox(height: 24.h),
     ];
 

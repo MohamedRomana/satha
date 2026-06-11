@@ -45,7 +45,7 @@ class SathaDropdown<T> extends StatelessWidget {
         DropdownButtonFormField<T>(
           initialValue: value,
           isExpanded: true,
-          icon: const Icon(Icons.keyboard_arrow_down_rounded,
+          icon: Icon(Icons.keyboard_arrow_down_rounded,
               color: AppColors.secondaryText),
           dropdownColor: Colors.white,
           borderRadius: BorderRadius.circular(16.r),

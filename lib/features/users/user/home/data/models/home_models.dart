@@ -41,6 +41,7 @@ enum OrderPreviewStatus {
 
 /// معاينة طلب في الهوم (نشط أو سابق).
 class HomeOrderPreview {
+  final String orderId;
   final String orderNumber;
   final String serviceTitleKey;
   final String vehicleName;
@@ -50,6 +51,7 @@ class HomeOrderPreview {
   final int offersCount;
 
   const HomeOrderPreview({
+    required this.orderId,
     required this.orderNumber,
     required this.serviceTitleKey,
     required this.vehicleName,

@@ -39,7 +39,7 @@ class ComingSoonView extends StatelessWidget {
                 Container(
                   width: 96.w,
                   height: 96.w,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     color: AppColors.softOrange,
                     shape: BoxShape.circle,
                   ),

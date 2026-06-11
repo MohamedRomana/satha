@@ -24,7 +24,7 @@ class AcceptOfferDialog {
               Container(
                 width: 64.w,
                 height: 64.w,
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   color: AppColors.softOrange,
                   shape: BoxShape.circle,
                 ),
@@ -63,7 +63,7 @@ class AcceptOfferDialog {
                       onPressed: () => Navigator.of(context).pop(false),
                       style: OutlinedButton.styleFrom(
                         minimumSize: Size(0, 50.h),
-                        side: const BorderSide(color: AppColors.border),
+                        side: BorderSide(color: AppColors.border),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(14.r),
                         ),

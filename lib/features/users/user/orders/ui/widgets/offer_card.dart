@@ -216,7 +216,7 @@ class OfferCard extends StatelessWidget {
   Widget _avatar(String? path) => Container(
     width: 52.w,
     height: 52.w,
-    decoration: const BoxDecoration(
+    decoration: BoxDecoration(
       color: AppColors.softOrange,
       shape: BoxShape.circle,
     ),

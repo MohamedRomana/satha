@@ -12,6 +12,8 @@ import 'package:satha/core/widgets/flash_message.dart';
 import 'package:satha/core/widgets/image_source_sheet.dart';
 import 'package:satha/gen/fonts.gen.dart';
 import 'package:satha/generated/locale_keys.g.dart';
+import '../../create_order/data/services/current_location_service.dart';
+import '../../create_order/data/services/location_permission_service.dart';
 import '../data/models/chat_model.dart';
 import '../logic/chat_details/chat_details_cubit.dart';
 import '../logic/chat_details/chat_details_state.dart';
@@ -72,6 +74,52 @@ class _ChatDetailsViewState extends State<_ChatDetailsView> {
     );
   }
 
+  bool _sendingLocation = false;
+
+  Future<void> _sendLocation(BuildContext context) async {
+    if (_sendingLocation) return;
+    final cubit = context.read<ChatDetailsCubit>();
+    setState(() => _sendingLocation = true);
+    try {
+      final status = await getIt<LocationPermissionService>().ensurePermission();
+      if (status != LocationPermissionStatus.granted) {
+        if (context.mounted) {
+          showFlashMessage(
+            message: LocaleKeys.permDeniedMsg.tr(),
+            type: FlashMessageType.warning,
+            context: context,
+          );
+        }
+        return;
+      }
+      final loc = await getIt<CurrentLocationService>().getCurrent();
+      if (cubit.isClosed) return;
+      await cubit.sendLocation(
+        loc.lat,
+        loc.lng,
+        now: DateTime.now(),
+        address: loc.address,
+      );
+      if (context.mounted) {
+        showFlashMessage(
+          message: LocaleKeys.locationShared.tr(),
+          type: FlashMessageType.success,
+          context: context,
+        );
+      }
+    } catch (_) {
+      if (context.mounted) {
+        showFlashMessage(
+          message: LocaleKeys.something_went_wrong.tr(),
+          type: FlashMessageType.error,
+          context: context,
+        );
+      }
+    } finally {
+      if (mounted) setState(() => _sendingLocation = false);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final cubit = context.read<ChatDetailsCubit>();
@@ -84,7 +132,7 @@ class _ChatDetailsViewState extends State<_ChatDetailsView> {
             Container(
               width: 40.w,
               height: 40.w,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 color: AppColors.softOrange,
                 shape: BoxShape.circle,
               ),
@@ -158,14 +206,9 @@ class _ChatDetailsViewState extends State<_ChatDetailsView> {
             onSendText: (text) =>
                 cubit.sendText(text, now: DateTime.now()),
             onAttachImage: () => _attachImage(context),
-            onSendLocation: () {
-              cubit.sendLocation(24.7136, 46.6753, now: DateTime.now());
-              showFlashMessage(
-                message: LocaleKeys.locationShared.tr(),
-                type: FlashMessageType.success,
-                context: context,
-              );
-            },
+            onSendLocation: () => _sendLocation(context),
+            onSendVoice: (path, ms) =>
+                cubit.sendVoice(path, ms, now: DateTime.now()),
           ),
         ],
       ),

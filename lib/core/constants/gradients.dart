@@ -17,11 +17,11 @@ abstract class AppGradients {
     colors: [AppColors.deepBg, AppColors.navy, AppColors.navy2],
   );
 
-  /// تدرّج فاتح لخلفيات الشاشات في الوضع الفاتح.
+  /// تدرّج فاتح لخلفيات الشاشات في الوضع الفاتح (قيم ثابتة فاتحة).
   static const LinearGradient light = LinearGradient(
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
-    colors: [Color(0xffFFFFFF), AppColors.lightBg, AppColors.softOrange],
+    colors: [Color(0xffFFFFFF), Color(0xffF7F9FC), Color(0xffFFF0E0)],
   );
 
   /// تدرّج البرتقالي للـ CTA والعناصر المميزة.

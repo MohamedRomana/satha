@@ -222,7 +222,7 @@ class _BottomBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.fromLTRB(16.w, 12.h, 16.w, 16.h),
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         color: AppColors.card,
         border: Border(top: BorderSide(color: AppColors.border)),
       ),
@@ -237,7 +237,7 @@ class _BottomBar extends StatelessWidget {
                   onPressed: onBack,
                   style: OutlinedButton.styleFrom(
                     minimumSize: Size(0, 54.h),
-                    side: const BorderSide(color: AppColors.border),
+                    side: BorderSide(color: AppColors.border),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(16.r),
                     ),

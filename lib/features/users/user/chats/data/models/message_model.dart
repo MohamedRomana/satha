@@ -1,5 +1,5 @@
 /// نوع الرسالة في المحادثة.
-enum MessageType { text, image, location, system }
+enum MessageType { text, image, location, voice, system }
 
 /// رسالة داخل محادثة.
 class MessageModel {
@@ -12,6 +12,9 @@ class MessageModel {
   final String? imagePath;
   final double? lat;
   final double? lng;
+  final String? address;
+  final String? voicePath;
+  final int? voiceMs; // مدّة التسجيل بالمللي ثانية
 
   const MessageModel({
     required this.id,
@@ -23,5 +26,8 @@ class MessageModel {
     this.imagePath,
     this.lat,
     this.lng,
+    this.address,
+    this.voicePath,
+    this.voiceMs,
   });
 }

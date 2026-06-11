@@ -102,7 +102,7 @@ class TrackingBottomPanel extends StatelessWidget {
                   Container(
                     width: 48.w,
                     height: 48.w,
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       color: AppColors.softOrange,
                       shape: BoxShape.circle,
                     ),

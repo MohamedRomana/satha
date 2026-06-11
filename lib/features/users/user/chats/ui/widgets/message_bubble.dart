@@ -7,8 +7,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:satha/core/constants/colors.dart';
 import 'package:satha/core/widgets/fade_slide_in.dart';
 import 'package:satha/gen/fonts.gen.dart';
-import 'package:satha/generated/locale_keys.g.dart';
 import '../../data/models/message_model.dart';
+import 'location_message_bubble.dart';
+import 'voice_message_bubble.dart';
 
 /// فقاعة رسالة في المحادثة (مع أنميشن دخول).
 class MessageBubble extends StatelessWidget {
@@ -100,25 +101,9 @@ class MessageBubble extends StatelessWidget {
               : const SizedBox.shrink(),
         );
       case MessageType.location:
-        return Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(
-              Icons.location_on_rounded,
-              size: 18.w,
-              color: me ? Colors.white : AppColors.orange,
-            ),
-            SizedBox(width: 6.w),
-            Text(
-              LocaleKeys.sharedLocation.tr(),
-              style: TextStyle(
-                fontSize: 13.sp,
-                color: me ? Colors.white : AppColors.mainText,
-                fontFamily: FontFamily.tajawalBold,
-              ),
-            ),
-          ],
-        );
+        return LocationMessageBubble(message: message, me: me);
+      case MessageType.voice:
+        return VoiceMessageBubble(message: message, me: me);
       default:
         return Text(
           message.text ?? '',

@@ -56,6 +56,8 @@
 	<string>We use your location to set your pickup point and destination when you place an order and to help drivers reach you accurately.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>Need to upload profile picture</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>We use your microphone to record and send voice messages to the driver.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Need to upload profile picture</string>
 
