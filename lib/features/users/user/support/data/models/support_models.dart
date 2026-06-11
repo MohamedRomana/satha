@@ -28,6 +28,27 @@ enum ComplaintCategory {
   other,
 }
 
+extension ComplaintCategoryX on ComplaintCategory {
+  String get labelKey {
+    switch (this) {
+      case ComplaintCategory.driver:
+        return 'complaintDriver';
+      case ComplaintCategory.price:
+        return 'complaintPrice';
+      case ComplaintCategory.delay:
+        return 'complaintDelay';
+      case ComplaintCategory.behavior:
+        return 'complaintBehavior';
+      case ComplaintCategory.order:
+        return 'complaintOrder';
+      case ComplaintCategory.technical:
+        return 'complaintTechnical';
+      case ComplaintCategory.other:
+        return 'complaintOther';
+    }
+  }
+}
+
 /// بلاغ/شكوى.
 class ComplaintModel {
   final String? orderId;

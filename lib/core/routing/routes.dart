@@ -33,6 +33,13 @@ class Routes {
   static const String liveTracking = '/liveTracking';
   static const String rateDriver = '/rateDriver';
   static const String orderInvoice = '/orderInvoice';
+
+  // ---- العميل: المحادثات والملف والدعم ----
+  static const String chatDetails = '/chatDetails';
+  static const String customerSettings = '/customerSettings';
+  static const String changePassword = '/changePassword';
+  static const String language = '/language';
+  static const String reportIssue = '/reportIssue';
   static const String logIn = '/logIn';
   static const String register = '/register';
   static const String otp = '/otp';

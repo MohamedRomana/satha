@@ -40,6 +40,20 @@ import '../../features/users/user/orders/ui/driver_public_profile_screen.dart';
 import '../../features/users/user/orders/ui/order_created_success_screen.dart';
 import '../../features/users/user/orders/ui/order_summary_screen.dart';
 import '../../features/users/user/orders/ui/rate_driver_screen.dart';
+import '../../features/users/user/chats/data/models/chat_model.dart';
+import '../../features/users/user/chats/ui/customer_chat_details_screen.dart';
+import '../../features/users/user/notifications/ui/customer_notifications_screen.dart';
+import '../../features/users/user/profile/ui/change_password_screen.dart';
+import '../../features/users/user/profile/ui/customer_settings_screen.dart';
+import '../../features/users/user/profile/ui/edit_customer_profile_screen.dart';
+import '../../features/users/user/profile/ui/language_screen.dart';
+import '../../features/users/user/support/ui/about_us_screen.dart';
+import '../../features/users/user/support/ui/contact_us_screen.dart';
+import '../../features/users/user/support/ui/faq_screen.dart';
+import '../../features/users/user/support/ui/privacy_policy_screen.dart';
+import '../../features/users/user/support/ui/report_issue_screen.dart';
+import '../../features/users/user/support/ui/support_screen.dart';
+import '../../features/users/user/support/ui/terms_conditions_screen.dart';
 import '../../generated/locale_keys.g.dart';
 import '../di/dependancy_injection.dart';
 import 'routes.dart';
@@ -226,6 +240,51 @@ class AppRouter {
         return _route(
           settings,
           CustomerOrderInvoiceScreen(order: args!['order'] as OrderModel),
+        );
+
+      case Routes.chatDetails:
+        return _route(
+          settings,
+          CustomerChatDetailsScreen(chat: args!['chat'] as ChatModel),
+        );
+
+      case Routes.notifications:
+        return _route(settings, const CustomerNotificationsScreen());
+
+      case Routes.editProfile:
+        return _route(settings, const EditCustomerProfileScreen());
+
+      case Routes.customerSettings:
+        return _route(settings, const CustomerSettingsScreen());
+
+      case Routes.changePassword:
+        return _route(settings, const ChangePasswordScreen());
+
+      case Routes.language:
+        return _route(settings, const LanguageScreen());
+
+      case Routes.aboutUs:
+        return _route(settings, const AboutUsScreen());
+
+      case Routes.privacyPolicy:
+        return _route(settings, const PrivacyPolicyScreen());
+
+      case Routes.termsConditions:
+        return _route(settings, const TermsAndConditionsScreen());
+
+      case Routes.qa:
+        return _route(settings, const FaqScreen());
+
+      case Routes.contactUs:
+        return _route(settings, const ContactUsScreen());
+
+      case Routes.support:
+        return _route(settings, const SupportScreen());
+
+      case Routes.reportIssue:
+        return _route(
+          settings,
+          ReportIssueScreen(orderId: args?['orderId'] as String?),
         );
 
       case Routes.addVehicle:
