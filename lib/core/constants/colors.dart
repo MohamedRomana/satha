@@ -1,13 +1,21 @@
 import 'dart:ui';
 
+import 'package:flutter/foundation.dart';
+
 /// ألوان هوية سطحة — Navy / Orange palette.
 ///
 /// ألوان الـ brand الثابتة (orange/navy/...) تبقى `const`. أما ألوان الأسطح
-/// (الخلفية/الكارت/النص/الحدود) فهي getters تتبدّل حسب الثيم عبر [isDark]
-/// الذي يُضبط من سطوع الثيم الفعّال في `MaterialApp.builder`.
+/// (الخلفية/الكارت/النص/الحدود) فهي getters تتبدّل حسب الثيم عبر [isDark].
+/// تغيير [isDark] يُخطر [darkNotifier] فتُعيد كل الشاشات (الملفوفة بـ
+/// ValueListenableBuilder في الراوتر) بناء نفسها فورًا بألوان الثيم الجديد.
 abstract class AppColors {
-  /// يُضبط من `MaterialApp.builder` حسب الثيم الفعّال (يدعم وضع النظام أيضًا).
-  static bool isDark = false;
+  /// مُخطِر يتغيّر مع وضع الثيم — تستمع إليه الشاشات لإعادة البناء الفوري.
+  static final ValueNotifier<bool> darkNotifier = ValueNotifier<bool>(false);
+
+  static bool get isDark => darkNotifier.value;
+  static set isDark(bool value) {
+    if (darkNotifier.value != value) darkNotifier.value = value;
+  }
 
   // ---- Brand (ثابتة) ----
   static const Color navy = Color(0xff071B33); // Primary Navy
