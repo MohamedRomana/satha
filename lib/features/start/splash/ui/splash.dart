@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:satha/core/cache/cache_helper.dart';
 import 'package:satha/core/constants/colors.dart';
 import 'package:satha/core/constants/gradients.dart';
+import 'package:satha/core/di/dependancy_injection.dart';
 import 'package:satha/core/helper/extentions.dart';
 import 'package:satha/core/helper/theme_x.dart';
 import 'package:satha/core/routing/routes.dart';
@@ -13,6 +14,7 @@ import 'package:satha/gen/fonts.gen.dart';
 import 'package:satha/generated/locale_keys.g.dart';
 import 'package:satha/features/auth/data/auth_session.dart';
 import 'package:satha/features/auth/data/models/user_role.dart';
+import 'package:satha/features/users/user/create_order/data/services/location_permission_service.dart';
 
 /// شاشة البداية المتحرّكة — تجهّز التطبيق ثم توجّه للوجهة المناسبة.
 class SplashScreen extends StatefulWidget {
@@ -52,6 +54,16 @@ class _SplashScreenState extends State<SplashScreen>
         Future.delayed(const Duration(milliseconds: 300), _goNext);
       }
     });
+    // طلب إذن الموقع أول ما يفتح التطبيق (بعد أول frame).
+    WidgetsBinding.instance.addPostFrameCallback((_) => _requestLocation());
+  }
+
+  Future<void> _requestLocation() async {
+    try {
+      await getIt<LocationPermissionService>().ensurePermission();
+    } catch (_) {
+      // في بيئة الاختبار لا يتوفّر geolocator — نتجاهل بهدوء.
+    }
   }
 
   void _goNext() {

@@ -7,7 +7,6 @@ import 'package:satha/features/users/user/main_layout/logic/main_layout_cubit.da
 import 'package:satha/features/users/user/orders/ui/customer_orders_screen.dart';
 import 'package:satha/features/users/user/profile/ui/customer_profile_screen.dart';
 import 'package:satha/features/users/user/vehicles/ui/customer_vehicles_screen.dart';
-import 'package:satha/core/theme/theme_cubit.dart';
 import 'widgets/customer_bottom_nav.dart';
 
 /// الهيكل الرئيسي للعميل — IndexedStack يحافظ على حالة كل تبويب.
@@ -29,8 +28,6 @@ class CustomerMainLayout extends StatelessWidget {
       child: BlocBuilder<MainLayoutCubit, int>(
         builder: (context, index) {
           final cubit = context.read<MainLayoutCubit>();
-          // مراقبة الثيم: تغيير الوضع يعيد بناء التبويبات بألوان الثيم الجديد فورًا.
-          final themeMode = context.watch<ThemeCubit>().state;
           return PopScope(
             canPop: index == 0,
             onPopInvokedWithResult: (didPop, _) {
@@ -38,7 +35,6 @@ class CustomerMainLayout extends StatelessWidget {
             },
             child: Scaffold(
               body: IndexedStack(
-                key: ValueKey(themeMode),
                 index: index,
                 children: _tabs,
               ),

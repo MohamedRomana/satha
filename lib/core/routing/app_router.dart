@@ -56,6 +56,7 @@ import '../../features/users/user/support/ui/support_screen.dart';
 import '../../features/users/user/support/ui/terms_conditions_screen.dart';
 import '../../generated/locale_keys.g.dart';
 import '../di/dependancy_injection.dart';
+import '../theme/theme_cubit.dart';
 import 'routes.dart';
 
 /// راوتر مركزي واحد — يحقن الـ Cubit المناسب من [getIt] لكل شاشة.
@@ -308,12 +309,20 @@ class AppRouter {
   }
 
   /// انتقال موحّد بـ fade + slide خفيف لكل الشاشات (مع الحفاظ على الـ name).
+  ///
+  /// كل شاشة ملفوفة بـ [BlocBuilder] على [ThemeCubit] مع [KeyedSubtree] مفتاحه
+  /// وضع الثيم — فبمجرد تبديل الثيم تُعاد بناء أي شاشة مفتوحة فورًا بألوان الثيم
+  /// الجديد (دون فقدان مكدّس التنقّل).
   PageRouteBuilder _route(RouteSettings settings, Widget child) {
     return PageRouteBuilder(
       settings: settings,
       transitionDuration: const Duration(milliseconds: 420),
       reverseTransitionDuration: const Duration(milliseconds: 320),
-      pageBuilder: (context, animation, secondaryAnimation) => child,
+      pageBuilder: (context, animation, secondaryAnimation) =>
+          BlocBuilder<ThemeCubit, ThemeMode>(
+            builder: (context, mode) =>
+                KeyedSubtree(key: ValueKey(mode), child: child),
+          ),
       transitionsBuilder: (context, animation, secondaryAnimation, c) {
         final curved = CurvedAnimation(
           parent: animation,

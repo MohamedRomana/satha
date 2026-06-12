@@ -53,9 +53,9 @@ class _CustomerSettingsScreenState extends State<CustomerSettingsScreen> {
               _switchRow(
                 icon: Icons.dark_mode_outlined,
                 label: LocaleKeys.darkMode.tr(),
-                value: context.watch<ThemeCubit>().state == ThemeMode.dark,
-                onChanged: (_) => context.read<ThemeCubit>().toggle(
-                  context.read<ThemeCubit>().state == ThemeMode.dark,
+                value: AppColors.isDark,
+                onChanged: (v) => context.read<ThemeCubit>().setMode(
+                  v ? ThemeMode.dark : ThemeMode.light,
                 ),
               ),
               _switchRow(
